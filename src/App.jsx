@@ -776,7 +776,7 @@ function GrainPage({ grainData, mapConfigs, mapDatasets }) {
 
       {/* Methodology */}
       <Card shadow="sm" padding="md" radius="md" withBorder>
-        <Text fw={700} size="sm" c="#888F9E" mb="xs">METHODOLOGY</Text>
+        <Text fw={700} size="sm" c="#ffffff" mb="xs">METHODOLOGY</Text>
         <Text size="xs" c="#888F9E" style={{ lineHeight: 1.6 }}>{methodology}</Text>
       </Card>
 
