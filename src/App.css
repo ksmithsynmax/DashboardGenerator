@@ -16,6 +16,13 @@ body {
   box-shadow: none !important;
 }
 
+.mantine-Badge-root {
+  font-size: 12px !important;
+  min-height: 24px !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
 .kpi-card {
   background-color: #181926 !important;
 }
