@@ -287,8 +287,15 @@ function SizeBinTable({ component, data }) {
               <Table.Td style={{ fontSize: '12px' }}>{r.label}</Table.Td>
               {isMultiSource && (
                 <Table.Td style={{ fontSize: '12px' }}>
-                  <Badge size="xs" variant="light"
-                    color={r.source === 'Dark' ? 'red' : 'blue'}>
+                  <Badge
+                    size="xs"
+                    variant="filled"
+                    style={
+                      r.source === 'Dark'
+                        ? { backgroundColor: '#FFA500', color: '#111326' }
+                        : { backgroundColor: '#F75349', color: '#111326' }
+                    }
+                  >
                     {r.source}
                   </Badge>
                 </Table.Td>
