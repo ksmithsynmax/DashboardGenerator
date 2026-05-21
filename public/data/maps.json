@@ -1,0 +1,1371 @@
+{
+  "95411aff-3bda-46d6-a541-689fd2631395": {
+    "id": "95411aff-3bda-46d6-a541-689fd2631395",
+    "name": "Novorossiysk \u2014 50km Detections",
+    "basemap": "dark",
+    "initial_view_state": {
+      "zoom": 9,
+      "latitude": 44.72,
+      "longitude": 37.79
+    },
+    "layers": [
+      {
+        "layer_id": "novorossiysk_unattr",
+        "name": "Unattributed",
+        "layer_type": "icon",
+        "dataset_id": 29,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 16,
+          "opacity": 0.8,
+          "icon_type": "det_unattributed",
+          "directional": true,
+          "heading_field": "heading"
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "object_id",
+            "length",
+            "provider",
+            "acquired"
+          ]
+        }
+      },
+      {
+        "layer_id": "novorossiysk_dark",
+        "name": "Dark",
+        "layer_type": "icon",
+        "dataset_id": 28,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 18,
+          "opacity": 0.9,
+          "icon_type": "det_dark",
+          "directional": true,
+          "heading_field": "heading"
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "provider",
+            "acquired"
+          ]
+        }
+      },
+      {
+        "layer_id": "novorossiysk_light",
+        "name": "Light",
+        "layer_type": "icon",
+        "dataset_id": 30,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 16,
+          "opacity": 0.7,
+          "icon_type": "det_light",
+          "directional": true,
+          "heading_field": "heading"
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "provider",
+            "acquired"
+          ]
+        }
+      },
+      {
+        "layer_id": "novorossiysk_suspect_1",
+        "name": "Suspect #1",
+        "layer_type": "icon",
+        "dataset_id": 38,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 40,
+          "opacity": 1.0,
+          "icon_url": "https://hyperion-dwa-fractal-bmcyidil7a-uc.a.run.app/session_file/session_53a22624d0fd15c0428fdbf9ac3f40a26c3adb0dd1ffda7275af161d4cf232db_20260514_194320536627/rank_badge_1.png?token=8f17cd80b0c2aa4dca4612665a9a696d",
+          "icon_width": 64,
+          "icon_height": 64
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "score",
+            "rank"
+          ]
+        },
+        "filter_expression": "rank == 1"
+      },
+      {
+        "layer_id": "novorossiysk_suspect_2",
+        "name": "Suspect #2",
+        "layer_type": "icon",
+        "dataset_id": 38,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 40,
+          "opacity": 1.0,
+          "icon_url": "https://hyperion-dwa-fractal-bmcyidil7a-uc.a.run.app/session_file/session_53a22624d0fd15c0428fdbf9ac3f40a26c3adb0dd1ffda7275af161d4cf232db_20260514_194320536627/rank_badge_2.png?token=efd43a205785a0a1fae0b93e01530429",
+          "icon_width": 64,
+          "icon_height": 64
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "score",
+            "rank"
+          ]
+        },
+        "filter_expression": "rank == 2"
+      },
+      {
+        "layer_id": "novorossiysk_suspect_3",
+        "name": "Suspect #3",
+        "layer_type": "icon",
+        "dataset_id": 38,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 40,
+          "opacity": 1.0,
+          "icon_url": "https://hyperion-dwa-fractal-bmcyidil7a-uc.a.run.app/session_file/session_53a22624d0fd15c0428fdbf9ac3f40a26c3adb0dd1ffda7275af161d4cf232db_20260514_194320536627/rank_badge_3.png?token=5a0218575ddb9dde54bd372eb2d66034",
+          "icon_width": 64,
+          "icon_height": 64
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "score",
+            "rank"
+          ]
+        },
+        "filter_expression": "rank == 3"
+      },
+      {
+        "layer_id": "novorossiysk_suspect_4",
+        "name": "Suspect #4",
+        "layer_type": "icon",
+        "dataset_id": 38,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 40,
+          "opacity": 1.0,
+          "icon_url": "https://hyperion-dwa-fractal-bmcyidil7a-uc.a.run.app/session_file/session_53a22624d0fd15c0428fdbf9ac3f40a26c3adb0dd1ffda7275af161d4cf232db_20260514_194320536627/rank_badge_4.png?token=4ec43103cff8e789f16d59c462963974",
+          "icon_width": 64,
+          "icon_height": 64
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "score",
+            "rank"
+          ]
+        },
+        "filter_expression": "rank == 4"
+      },
+      {
+        "layer_id": "novorossiysk_suspect_5",
+        "name": "Suspect #5",
+        "layer_type": "icon",
+        "dataset_id": 38,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 40,
+          "opacity": 1.0,
+          "icon_url": "https://hyperion-dwa-fractal-bmcyidil7a-uc.a.run.app/session_file/session_53a22624d0fd15c0428fdbf9ac3f40a26c3adb0dd1ffda7275af161d4cf232db_20260514_194320536627/rank_badge_5.png?token=f4009b52359602b088b471c6f410b68e",
+          "icon_width": 64,
+          "icon_height": 64
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "score",
+            "rank"
+          ]
+        },
+        "filter_expression": "rank == 5"
+      }
+    ]
+  },
+  "71615512-20fa-4628-b7ca-538084fe753a": {
+    "id": "71615512-20fa-4628-b7ca-538084fe753a",
+    "name": "Kerch \u2014 50km Detections",
+    "basemap": "dark",
+    "initial_view_state": {
+      "zoom": 9,
+      "latitude": 45.35,
+      "longitude": 36.47
+    },
+    "layers": [
+      {
+        "layer_id": "kerch_unattr",
+        "name": "Unattributed",
+        "layer_type": "icon",
+        "dataset_id": 26,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 16,
+          "opacity": 0.8,
+          "icon_type": "det_unattributed",
+          "directional": true,
+          "heading_field": "heading"
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "object_id",
+            "length",
+            "provider",
+            "acquired"
+          ]
+        }
+      },
+      {
+        "layer_id": "kerch_dark",
+        "name": "Dark",
+        "layer_type": "icon",
+        "dataset_id": 25,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 18,
+          "opacity": 0.9,
+          "icon_type": "det_dark",
+          "directional": true,
+          "heading_field": "heading"
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "provider",
+            "acquired"
+          ]
+        }
+      },
+      {
+        "layer_id": "kerch_light",
+        "name": "Light",
+        "layer_type": "icon",
+        "dataset_id": 27,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 16,
+          "opacity": 0.7,
+          "icon_type": "det_light",
+          "directional": true,
+          "heading_field": "heading"
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "provider",
+            "acquired"
+          ]
+        }
+      },
+      {
+        "layer_id": "kerch_suspect_1",
+        "name": "Suspect #1",
+        "layer_type": "icon",
+        "dataset_id": 37,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 40,
+          "opacity": 1.0,
+          "icon_url": "https://hyperion-dwa-fractal-bmcyidil7a-uc.a.run.app/session_file/session_53a22624d0fd15c0428fdbf9ac3f40a26c3adb0dd1ffda7275af161d4cf232db_20260514_194320536627/rank_badge_1.png?token=8f17cd80b0c2aa4dca4612665a9a696d",
+          "icon_width": 64,
+          "icon_height": 64
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "score",
+            "rank"
+          ]
+        },
+        "filter_expression": "rank == 1"
+      },
+      {
+        "layer_id": "kerch_suspect_2",
+        "name": "Suspect #2",
+        "layer_type": "icon",
+        "dataset_id": 37,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 40,
+          "opacity": 1.0,
+          "icon_url": "https://hyperion-dwa-fractal-bmcyidil7a-uc.a.run.app/session_file/session_53a22624d0fd15c0428fdbf9ac3f40a26c3adb0dd1ffda7275af161d4cf232db_20260514_194320536627/rank_badge_2.png?token=efd43a205785a0a1fae0b93e01530429",
+          "icon_width": 64,
+          "icon_height": 64
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "score",
+            "rank"
+          ]
+        },
+        "filter_expression": "rank == 2"
+      },
+      {
+        "layer_id": "kerch_suspect_3",
+        "name": "Suspect #3",
+        "layer_type": "icon",
+        "dataset_id": 37,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 40,
+          "opacity": 1.0,
+          "icon_url": "https://hyperion-dwa-fractal-bmcyidil7a-uc.a.run.app/session_file/session_53a22624d0fd15c0428fdbf9ac3f40a26c3adb0dd1ffda7275af161d4cf232db_20260514_194320536627/rank_badge_3.png?token=5a0218575ddb9dde54bd372eb2d66034",
+          "icon_width": 64,
+          "icon_height": 64
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "score",
+            "rank"
+          ]
+        },
+        "filter_expression": "rank == 3"
+      },
+      {
+        "layer_id": "kerch_suspect_4",
+        "name": "Suspect #4",
+        "layer_type": "icon",
+        "dataset_id": 37,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 40,
+          "opacity": 1.0,
+          "icon_url": "https://hyperion-dwa-fractal-bmcyidil7a-uc.a.run.app/session_file/session_53a22624d0fd15c0428fdbf9ac3f40a26c3adb0dd1ffda7275af161d4cf232db_20260514_194320536627/rank_badge_4.png?token=4ec43103cff8e789f16d59c462963974",
+          "icon_width": 64,
+          "icon_height": 64
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "score",
+            "rank"
+          ]
+        },
+        "filter_expression": "rank == 4"
+      },
+      {
+        "layer_id": "kerch_suspect_5",
+        "name": "Suspect #5",
+        "layer_type": "icon",
+        "dataset_id": 37,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 40,
+          "opacity": 1.0,
+          "icon_url": "https://hyperion-dwa-fractal-bmcyidil7a-uc.a.run.app/session_file/session_53a22624d0fd15c0428fdbf9ac3f40a26c3adb0dd1ffda7275af161d4cf232db_20260514_194320536627/rank_badge_5.png?token=f4009b52359602b088b471c6f410b68e",
+          "icon_width": 64,
+          "icon_height": 64
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "score",
+            "rank"
+          ]
+        },
+        "filter_expression": "rank == 5"
+      }
+    ]
+  },
+  "8de2a4eb-5e79-4700-85be-f90bda344997": {
+    "id": "8de2a4eb-5e79-4700-85be-f90bda344997",
+    "name": "Feodosia \u2014 50km Detections",
+    "basemap": "dark",
+    "initial_view_state": {
+      "zoom": 9,
+      "latitude": 45.03,
+      "longitude": 35.38
+    },
+    "layers": [
+      {
+        "layer_id": "feodosia_unattr",
+        "name": "Unattributed",
+        "layer_type": "icon",
+        "dataset_id": 24,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 16,
+          "opacity": 0.8,
+          "icon_type": "det_unattributed",
+          "directional": true,
+          "heading_field": "heading"
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "object_id",
+            "length",
+            "provider",
+            "acquired"
+          ]
+        }
+      },
+      {
+        "layer_id": "feodosia_suspect_1",
+        "name": "Suspect #1",
+        "layer_type": "icon",
+        "dataset_id": 36,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 40,
+          "opacity": 1.0,
+          "icon_url": "https://hyperion-dwa-fractal-bmcyidil7a-uc.a.run.app/session_file/session_53a22624d0fd15c0428fdbf9ac3f40a26c3adb0dd1ffda7275af161d4cf232db_20260514_194320536627/rank_badge_1.png?token=8f17cd80b0c2aa4dca4612665a9a696d",
+          "icon_width": 64,
+          "icon_height": 64
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "score",
+            "rank"
+          ]
+        },
+        "filter_expression": "rank == 1"
+      },
+      {
+        "layer_id": "feodosia_suspect_2",
+        "name": "Suspect #2",
+        "layer_type": "icon",
+        "dataset_id": 36,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 40,
+          "opacity": 1.0,
+          "icon_url": "https://hyperion-dwa-fractal-bmcyidil7a-uc.a.run.app/session_file/session_53a22624d0fd15c0428fdbf9ac3f40a26c3adb0dd1ffda7275af161d4cf232db_20260514_194320536627/rank_badge_2.png?token=efd43a205785a0a1fae0b93e01530429",
+          "icon_width": 64,
+          "icon_height": 64
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "score",
+            "rank"
+          ]
+        },
+        "filter_expression": "rank == 2"
+      },
+      {
+        "layer_id": "feodosia_suspect_3",
+        "name": "Suspect #3",
+        "layer_type": "icon",
+        "dataset_id": 36,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 40,
+          "opacity": 1.0,
+          "icon_url": "https://hyperion-dwa-fractal-bmcyidil7a-uc.a.run.app/session_file/session_53a22624d0fd15c0428fdbf9ac3f40a26c3adb0dd1ffda7275af161d4cf232db_20260514_194320536627/rank_badge_3.png?token=5a0218575ddb9dde54bd372eb2d66034",
+          "icon_width": 64,
+          "icon_height": 64
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "score",
+            "rank"
+          ]
+        },
+        "filter_expression": "rank == 3"
+      },
+      {
+        "layer_id": "feodosia_suspect_4",
+        "name": "Suspect #4",
+        "layer_type": "icon",
+        "dataset_id": 36,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 40,
+          "opacity": 1.0,
+          "icon_url": "https://hyperion-dwa-fractal-bmcyidil7a-uc.a.run.app/session_file/session_53a22624d0fd15c0428fdbf9ac3f40a26c3adb0dd1ffda7275af161d4cf232db_20260514_194320536627/rank_badge_4.png?token=4ec43103cff8e789f16d59c462963974",
+          "icon_width": 64,
+          "icon_height": 64
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "score",
+            "rank"
+          ]
+        },
+        "filter_expression": "rank == 4"
+      },
+      {
+        "layer_id": "feodosia_suspect_5",
+        "name": "Suspect #5",
+        "layer_type": "icon",
+        "dataset_id": 36,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 40,
+          "opacity": 1.0,
+          "icon_url": "https://hyperion-dwa-fractal-bmcyidil7a-uc.a.run.app/session_file/session_53a22624d0fd15c0428fdbf9ac3f40a26c3adb0dd1ffda7275af161d4cf232db_20260514_194320536627/rank_badge_5.png?token=f4009b52359602b088b471c6f410b68e",
+          "icon_width": 64,
+          "icon_height": 64
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "score",
+            "rank"
+          ]
+        },
+        "filter_expression": "rank == 5"
+      }
+    ]
+  },
+  "94faf881-b616-45a7-bc57-a2be0add54c3": {
+    "id": "94faf881-b616-45a7-bc57-a2be0add54c3",
+    "name": "Berdyansk \u2014 50km Detections",
+    "basemap": "dark",
+    "initial_view_state": {
+      "zoom": 9,
+      "latitude": 46.76,
+      "longitude": 36.78
+    },
+    "layers": [
+      {
+        "layer_id": "berdyansk_unattr",
+        "name": "Unattributed",
+        "layer_type": "icon",
+        "dataset_id": 23,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 16,
+          "opacity": 0.8,
+          "icon_type": "det_unattributed",
+          "directional": true,
+          "heading_field": "heading"
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "object_id",
+            "length",
+            "provider",
+            "acquired"
+          ]
+        }
+      },
+      {
+        "layer_id": "berdyansk_dark",
+        "name": "Dark",
+        "layer_type": "icon",
+        "dataset_id": 22,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 18,
+          "opacity": 0.9,
+          "icon_type": "det_dark",
+          "directional": true,
+          "heading_field": "heading"
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "provider",
+            "acquired"
+          ]
+        }
+      },
+      {
+        "layer_id": "berdyansk_suspect_1",
+        "name": "Suspect #1",
+        "layer_type": "icon",
+        "dataset_id": 35,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 40,
+          "opacity": 1.0,
+          "icon_url": "https://hyperion-dwa-fractal-bmcyidil7a-uc.a.run.app/session_file/session_53a22624d0fd15c0428fdbf9ac3f40a26c3adb0dd1ffda7275af161d4cf232db_20260514_194320536627/rank_badge_1.png?token=8f17cd80b0c2aa4dca4612665a9a696d",
+          "icon_width": 64,
+          "icon_height": 64
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "score",
+            "rank"
+          ]
+        },
+        "filter_expression": "rank == 1"
+      },
+      {
+        "layer_id": "berdyansk_suspect_2",
+        "name": "Suspect #2",
+        "layer_type": "icon",
+        "dataset_id": 35,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 40,
+          "opacity": 1.0,
+          "icon_url": "https://hyperion-dwa-fractal-bmcyidil7a-uc.a.run.app/session_file/session_53a22624d0fd15c0428fdbf9ac3f40a26c3adb0dd1ffda7275af161d4cf232db_20260514_194320536627/rank_badge_2.png?token=efd43a205785a0a1fae0b93e01530429",
+          "icon_width": 64,
+          "icon_height": 64
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "score",
+            "rank"
+          ]
+        },
+        "filter_expression": "rank == 2"
+      },
+      {
+        "layer_id": "berdyansk_suspect_3",
+        "name": "Suspect #3",
+        "layer_type": "icon",
+        "dataset_id": 35,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 40,
+          "opacity": 1.0,
+          "icon_url": "https://hyperion-dwa-fractal-bmcyidil7a-uc.a.run.app/session_file/session_53a22624d0fd15c0428fdbf9ac3f40a26c3adb0dd1ffda7275af161d4cf232db_20260514_194320536627/rank_badge_3.png?token=5a0218575ddb9dde54bd372eb2d66034",
+          "icon_width": 64,
+          "icon_height": 64
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "score",
+            "rank"
+          ]
+        },
+        "filter_expression": "rank == 3"
+      },
+      {
+        "layer_id": "berdyansk_suspect_4",
+        "name": "Suspect #4",
+        "layer_type": "icon",
+        "dataset_id": 35,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 40,
+          "opacity": 1.0,
+          "icon_url": "https://hyperion-dwa-fractal-bmcyidil7a-uc.a.run.app/session_file/session_53a22624d0fd15c0428fdbf9ac3f40a26c3adb0dd1ffda7275af161d4cf232db_20260514_194320536627/rank_badge_4.png?token=4ec43103cff8e789f16d59c462963974",
+          "icon_width": 64,
+          "icon_height": 64
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "score",
+            "rank"
+          ]
+        },
+        "filter_expression": "rank == 4"
+      },
+      {
+        "layer_id": "berdyansk_suspect_5",
+        "name": "Suspect #5",
+        "layer_type": "icon",
+        "dataset_id": 35,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 40,
+          "opacity": 1.0,
+          "icon_url": "https://hyperion-dwa-fractal-bmcyidil7a-uc.a.run.app/session_file/session_53a22624d0fd15c0428fdbf9ac3f40a26c3adb0dd1ffda7275af161d4cf232db_20260514_194320536627/rank_badge_5.png?token=f4009b52359602b088b471c6f410b68e",
+          "icon_width": 64,
+          "icon_height": 64
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "score",
+            "rank"
+          ]
+        },
+        "filter_expression": "rank == 5"
+      }
+    ]
+  },
+  "efa4ea93-48e5-4a7f-b905-6b90cd3495fb": {
+    "id": "efa4ea93-48e5-4a7f-b905-6b90cd3495fb",
+    "name": "Mariupol \u2014 50km Detections",
+    "basemap": "dark",
+    "initial_view_state": {
+      "zoom": 9,
+      "latitude": 47.09,
+      "longitude": 37.55
+    },
+    "layers": [
+      {
+        "layer_id": "mariupol_unattr",
+        "name": "Unattributed",
+        "layer_type": "icon",
+        "dataset_id": 32,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 16,
+          "opacity": 0.8,
+          "icon_type": "det_unattributed",
+          "directional": true,
+          "heading_field": "heading"
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "object_id",
+            "length",
+            "provider",
+            "acquired"
+          ]
+        }
+      },
+      {
+        "layer_id": "mariupol_dark",
+        "name": "Dark",
+        "layer_type": "icon",
+        "dataset_id": 31,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 18,
+          "opacity": 0.9,
+          "icon_type": "det_dark",
+          "directional": true,
+          "heading_field": "heading"
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "provider",
+            "acquired"
+          ]
+        }
+      },
+      {
+        "layer_id": "mariupol_light",
+        "name": "Light",
+        "layer_type": "icon",
+        "dataset_id": 33,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 16,
+          "opacity": 0.7,
+          "icon_type": "det_light",
+          "directional": true,
+          "heading_field": "heading"
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "provider",
+            "acquired"
+          ]
+        }
+      },
+      {
+        "layer_id": "mariupol_suspect_1",
+        "name": "Suspect #1",
+        "layer_type": "icon",
+        "dataset_id": 34,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 40,
+          "opacity": 1.0,
+          "icon_url": "https://hyperion-dwa-fractal-bmcyidil7a-uc.a.run.app/session_file/session_53a22624d0fd15c0428fdbf9ac3f40a26c3adb0dd1ffda7275af161d4cf232db_20260514_194320536627/rank_badge_1.png?token=8f17cd80b0c2aa4dca4612665a9a696d",
+          "icon_width": 64,
+          "icon_height": 64
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "score",
+            "rank"
+          ]
+        },
+        "filter_expression": "rank == 1"
+      },
+      {
+        "layer_id": "mariupol_suspect_2",
+        "name": "Suspect #2",
+        "layer_type": "icon",
+        "dataset_id": 34,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 40,
+          "opacity": 1.0,
+          "icon_url": "https://hyperion-dwa-fractal-bmcyidil7a-uc.a.run.app/session_file/session_53a22624d0fd15c0428fdbf9ac3f40a26c3adb0dd1ffda7275af161d4cf232db_20260514_194320536627/rank_badge_2.png?token=efd43a205785a0a1fae0b93e01530429",
+          "icon_width": 64,
+          "icon_height": 64
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "score",
+            "rank"
+          ]
+        },
+        "filter_expression": "rank == 2"
+      },
+      {
+        "layer_id": "mariupol_suspect_3",
+        "name": "Suspect #3",
+        "layer_type": "icon",
+        "dataset_id": 34,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 40,
+          "opacity": 1.0,
+          "icon_url": "https://hyperion-dwa-fractal-bmcyidil7a-uc.a.run.app/session_file/session_53a22624d0fd15c0428fdbf9ac3f40a26c3adb0dd1ffda7275af161d4cf232db_20260514_194320536627/rank_badge_3.png?token=5a0218575ddb9dde54bd372eb2d66034",
+          "icon_width": 64,
+          "icon_height": 64
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "score",
+            "rank"
+          ]
+        },
+        "filter_expression": "rank == 3"
+      },
+      {
+        "layer_id": "mariupol_suspect_4",
+        "name": "Suspect #4",
+        "layer_type": "icon",
+        "dataset_id": 34,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 40,
+          "opacity": 1.0,
+          "icon_url": "https://hyperion-dwa-fractal-bmcyidil7a-uc.a.run.app/session_file/session_53a22624d0fd15c0428fdbf9ac3f40a26c3adb0dd1ffda7275af161d4cf232db_20260514_194320536627/rank_badge_4.png?token=4ec43103cff8e789f16d59c462963974",
+          "icon_width": 64,
+          "icon_height": 64
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "score",
+            "rank"
+          ]
+        },
+        "filter_expression": "rank == 4"
+      },
+      {
+        "layer_id": "mariupol_suspect_5",
+        "name": "Suspect #5",
+        "layer_type": "icon",
+        "dataset_id": 34,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 40,
+          "opacity": 1.0,
+          "icon_url": "https://hyperion-dwa-fractal-bmcyidil7a-uc.a.run.app/session_file/session_53a22624d0fd15c0428fdbf9ac3f40a26c3adb0dd1ffda7275af161d4cf232db_20260514_194320536627/rank_badge_5.png?token=f4009b52359602b088b471c6f410b68e",
+          "icon_width": 64,
+          "icon_height": 64
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "score",
+            "rank"
+          ]
+        },
+        "filter_expression": "rank == 5"
+      }
+    ]
+  },
+  "d705f997-cfc4-4cbb-80a1-ba64913f7f9e": {
+    "id": "d705f997-cfc4-4cbb-80a1-ba64913f7f9e",
+    "name": "AIS-Light Bulkers 90\u2013200m",
+    "basemap": "dark",
+    "initial_view_state": {
+      "zoom": 5,
+      "pitch": 0,
+      "bearing": 0,
+      "latitude": 42.5,
+      "longitude": 38.0
+    },
+    "layers": [
+      {
+        "layer_id": "light_bulkers",
+        "name": "AIS-Light Bulkers",
+        "layer_type": "icon",
+        "dataset_id": 20,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 20,
+          "opacity": 0.9,
+          "icon_type": "det_light",
+          "directional": true,
+          "heading_field": "heading"
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "object_id",
+            "name",
+            "imo",
+            "mmsi",
+            "flag_short_code",
+            "length",
+            "ship_type",
+            "acquired",
+            "provider",
+            "heading"
+          ]
+        }
+      }
+    ]
+  },
+  "f58ae694-1985-4132-af85-7a7b8239528e": {
+    "id": "f58ae694-1985-4132-af85-7a7b8239528e",
+    "name": "Sentinel-1 SAR \u2014 Unattributed Bulkers 90\u2013200m",
+    "basemap": "dark",
+    "initial_view_state": {
+      "zoom": 5.5,
+      "pitch": 0,
+      "bearing": 0,
+      "latitude": 43.0,
+      "longitude": 38.0
+    },
+    "layers": [
+      {
+        "layer_id": "s1_unattr",
+        "name": "S1 Unattributed Bulkers",
+        "layer_type": "icon",
+        "dataset_id": 18,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 20,
+          "opacity": 0.85,
+          "icon_type": "det_unattributed",
+          "directional": true,
+          "heading_field": "heading"
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "object_id",
+            "acquired",
+            "length",
+            "width",
+            "heading",
+            "provider"
+          ]
+        }
+      }
+    ]
+  },
+  "d2fc1ff1-0e2d-4850-a6ac-3a98e23b3cc0": {
+    "id": "d2fc1ff1-0e2d-4850-a6ac-3a98e23b3cc0",
+    "name": "Bulkers 90-200m \u2014 Dark & Unattributed",
+    "basemap": "dark",
+    "initial_view_state": {
+      "zoom": 5,
+      "latitude": 43.0,
+      "longitude": 38.0
+    },
+    "layers": [
+      {
+        "layer_id": "unattr_bulkers",
+        "name": "Unattributed Bulkers",
+        "layer_type": "icon",
+        "dataset_id": 16,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 14,
+          "opacity": 0.7,
+          "icon_type": "det_unattributed",
+          "directional": true,
+          "heading_field": "heading"
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "object_id",
+            "length",
+            "heading",
+            "provider",
+            "acquired"
+          ]
+        }
+      },
+      {
+        "layer_id": "dark_bulkers",
+        "name": "Dark Bulkers",
+        "layer_type": "icon",
+        "dataset_id": 15,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 18,
+          "opacity": 0.9,
+          "icon_type": "det_dark",
+          "directional": true,
+          "heading_field": "heading"
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "object_id",
+            "name",
+            "imo",
+            "mmsi",
+            "length",
+            "provider",
+            "acquired"
+          ]
+        }
+      }
+    ]
+  },
+  "b2342521-36b0-48de-8cd6-7fb43ec63610": {
+    "id": "b2342521-36b0-48de-8cd6-7fb43ec63610",
+    "name": "Weekly Intelligence \u2014 7\u201314 May 2026",
+    "basemap": "dark",
+    "initial_view_state": {
+      "zoom": 5,
+      "latitude": 43.0,
+      "longitude": 38.0
+    },
+    "layers": [
+      {
+        "layer_id": "sts_transfers",
+        "name": "AIS STS Transfers",
+        "layer_type": "icon",
+        "dataset_id": 17,
+        "latitude_field": "latitude",
+        "longitude_field": "longitude",
+        "style": {
+          "size": 22,
+          "opacity": 0.9,
+          "icon_type": "det_sts_cluster",
+          "directional": true,
+          "heading_field": "heading"
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name_1",
+            "name_2",
+            "duration_label",
+            "status"
+          ]
+        }
+      },
+      {
+        "layer_id": "optical_det_sts_uu",
+        "name": "Optical STS (UU)",
+        "layer_type": "icon",
+        "dataset_id": 21,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 20,
+          "opacity": 0.9,
+          "icon_type": "det_sts_uu",
+          "directional": true,
+          "heading_field": "heading"
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "provider",
+            "acquired"
+          ]
+        },
+        "filter_expression": "sts_icon == 'det_sts_uu'"
+      },
+      {
+        "layer_id": "optical_det_sts_ll",
+        "name": "Optical STS (LL)",
+        "layer_type": "icon",
+        "dataset_id": 21,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 20,
+          "opacity": 0.9,
+          "icon_type": "det_sts_ll",
+          "directional": true,
+          "heading_field": "heading"
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "provider",
+            "acquired"
+          ]
+        },
+        "filter_expression": "sts_icon == 'det_sts_ll'"
+      },
+      {
+        "layer_id": "optical_det_sts_ul",
+        "name": "Optical STS (UL)",
+        "layer_type": "icon",
+        "dataset_id": 21,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 20,
+          "opacity": 0.9,
+          "icon_type": "det_sts_ul",
+          "directional": true,
+          "heading_field": "heading"
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "provider",
+            "acquired"
+          ]
+        },
+        "filter_expression": "sts_icon == 'det_sts_ul'"
+      },
+      {
+        "layer_id": "optical_det_sts_lu",
+        "name": "Optical STS (LU)",
+        "layer_type": "icon",
+        "dataset_id": 21,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 20,
+          "opacity": 0.9,
+          "icon_type": "det_sts_lu",
+          "directional": true,
+          "heading_field": "heading"
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "provider",
+            "acquired"
+          ]
+        },
+        "filter_expression": "sts_icon == 'det_sts_lu'"
+      },
+      {
+        "layer_id": "optical_det_sts_dd",
+        "name": "Optical STS (DD)",
+        "layer_type": "icon",
+        "dataset_id": 21,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 20,
+          "opacity": 0.9,
+          "icon_type": "det_sts_dd",
+          "directional": true,
+          "heading_field": "heading"
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "provider",
+            "acquired"
+          ]
+        },
+        "filter_expression": "sts_icon == 'det_sts_dd'"
+      },
+      {
+        "layer_id": "optical_det_sts_du",
+        "name": "Optical STS (DU)",
+        "layer_type": "icon",
+        "dataset_id": 21,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 20,
+          "opacity": 0.9,
+          "icon_type": "det_sts_du",
+          "directional": true,
+          "heading_field": "heading"
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "provider",
+            "acquired"
+          ]
+        },
+        "filter_expression": "sts_icon == 'det_sts_du'"
+      },
+      {
+        "layer_id": "optical_det_sts_ud",
+        "name": "Optical STS (UD)",
+        "layer_type": "icon",
+        "dataset_id": 21,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 20,
+          "opacity": 0.9,
+          "icon_type": "det_sts_ud",
+          "directional": true,
+          "heading_field": "heading"
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "length",
+            "provider",
+            "acquired"
+          ]
+        },
+        "filter_expression": "sts_icon == 'det_sts_ud'"
+      },
+      {
+        "layer_id": "dark_detections",
+        "name": "Dark Detections",
+        "layer_type": "icon",
+        "dataset_id": 11,
+        "latitude_field": "lat",
+        "longitude_field": "lon",
+        "style": {
+          "size": 18,
+          "opacity": 0.9,
+          "icon_type": "det_dark",
+          "directional": true,
+          "heading_field": "heading"
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "mmsi",
+            "ship_type",
+            "length",
+            "provider",
+            "acquired"
+          ]
+        }
+      },
+      {
+        "layer_id": "spoofing_weekly",
+        "name": "Spoofing Events",
+        "layer_type": "icon",
+        "dataset_id": 10,
+        "latitude_field": "latitude",
+        "longitude_field": "longitude",
+        "style": {
+          "size": 20,
+          "opacity": 0.9,
+          "icon_type": "det_spoofed_pos"
+        },
+        "interaction": {
+          "tooltip_fields": [
+            "name",
+            "imo",
+            "description",
+            "timestamp"
+          ]
+        }
+      }
+    ]
+  }
+}

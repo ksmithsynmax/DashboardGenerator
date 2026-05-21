@@ -1,0 +1,262 @@
+{
+  "header": {
+    "title": "Grain Smuggling Risk Assessment \u2014 Port-By-Port Analysis",
+    "subtitle": "Dark & Unattributed Cargo Vessels 90\u2013200m \u2022 15 May 2026 \u2022 Top 5 Suspects Per Port"
+  },
+  "ports": {
+    "mariupol": {
+      "id": "grain-mariupol",
+      "name": "MARIUPOL",
+      "icon": "\ud83c\udfed",
+      "risk": "LOW RISK",
+      "risk_color": "#38bdf8",
+      "coords": "46.95\u00b0N, 37.55\u00b0E",
+      "description": "Major Azov Sea grain terminal. Russian-occupied since 2022. Limited commercial activity but strategic grain loading point.",
+      "stats": {
+        "dark": 0,
+        "unattributed": 2,
+        "ais_light": 1,
+        "total": 3
+      },
+      "map_id": "efa4ea93-48e5-4a7f-b905-6b90cd3495fb"
+    },
+    "berdyansk": {
+      "id": "grain-berdyansk",
+      "name": "BERDYANSK",
+      "icon": "\u2693",
+      "risk": "LOW RISK",
+      "risk_color": "#38bdf8",
+      "coords": "46.76\u00b0N, 36.80\u00b0E",
+      "description": "Azov Sea port under Russian control. Used for grain exports from occupied territories. Shallow draft limits vessel size.",
+      "stats": {
+        "dark": 0,
+        "unattributed": 2,
+        "ais_light": 0,
+        "total": 2
+      },
+      "map_id": "94faf881-b616-45a7-bc57-a2be0add54c3"
+    },
+    "feodosia": {
+      "id": "grain-feodosia",
+      "name": "FEODOSIA",
+      "icon": "\ud83d\udea2",
+      "risk": "MINIMAL RISK",
+      "risk_color": "#4ade80",
+      "coords": "45.04\u00b0N, 35.40\u00b0E",
+      "description": "Crimean port with grain terminal. Under Russian control since 2014. Key node in sanctioned grain export network.",
+      "stats": {
+        "dark": 0,
+        "unattributed": 0,
+        "ais_light": 0,
+        "total": 0
+      },
+      "map_id": "8de2a4eb-5e79-4700-85be-f90bda344997"
+    },
+    "kerch": {
+      "id": "grain-kerch",
+      "name": "KERCH",
+      "icon": "\ud83c\udf0a",
+      "risk": "MODERATE RISK",
+      "risk_color": "#fbbf24",
+      "coords": "45.35\u00b0N, 36.47\u00b0E",
+      "description": "Strategic Kerch Strait gateway between Azov and Black Sea. All Azov-bound traffic transits here. High surveillance value.",
+      "stats": {
+        "dark": 0,
+        "unattributed": 6,
+        "ais_light": 0,
+        "total": 6
+      },
+      "map_id": "71615512-20fa-4628-b7ca-538084fe753a"
+    },
+    "novorossiysk": {
+      "id": "grain-novorossiysk",
+      "name": "NOVOROSSIYSK",
+      "icon": "\ud83c\udfd7\ufe0f",
+      "risk": "LOW RISK",
+      "risk_color": "#38bdf8",
+      "coords": "44.72\u00b0N, 37.78\u00b0E",
+      "description": "Russia's largest Black Sea commercial port. Major legitimate grain exporter but also potential co-mingling point for sanctioned cargo.",
+      "stats": {
+        "dark": 0,
+        "unattributed": 3,
+        "ais_light": 1,
+        "total": 4
+      },
+      "map_id": "95411aff-3bda-46d6-a541-689fd2631395"
+    }
+  },
+  "port_order": [
+    "mariupol",
+    "berdyansk",
+    "feodosia",
+    "kerch",
+    "novorossiysk"
+  ],
+  "suspects": {
+    "mariupol": {
+      "id": "suspects-mariupol",
+      "port": "MARIUPOL",
+      "title": "MARIUPOL \u2014 TOP 2 SUSPECTS",
+      "vessels": [
+        {
+          "rank": 1,
+          "name": "UNATTRIBUTED",
+          "imo": "\u2014",
+          "flag": "\u2014",
+          "size": "136m \u00d7 24m",
+          "position": "47.044\u00b0N, 37.498\u00b0E",
+          "risk": 45
+        },
+        {
+          "rank": 2,
+          "name": "UNATTRIBUTED",
+          "imo": "\u2014",
+          "flag": "\u2014",
+          "size": "115m \u00d7 20m",
+          "position": "47.059\u00b0N, 37.509\u00b0E",
+          "risk": 40
+        }
+      ]
+    },
+    "berdyansk": {
+      "id": "suspects-berdyansk",
+      "port": "BERDYANSK",
+      "title": "BERDYANSK \u2014 TOP 2 SUSPECTS",
+      "vessels": [
+        {
+          "rank": 1,
+          "name": "UNATTRIBUTED",
+          "imo": "\u2014",
+          "flag": "\u2014",
+          "size": "133m \u00d7 23m",
+          "position": "46.753\u00b0N, 36.775\u00b0E",
+          "risk": 45
+        },
+        {
+          "rank": 2,
+          "name": "UNATTRIBUTED",
+          "imo": "\u2014",
+          "flag": "\u2014",
+          "size": "111m \u00d7 19m",
+          "position": "46.752\u00b0N, 36.777\u00b0E",
+          "risk": 40
+        }
+      ]
+    },
+    "feodosia": {
+      "id": "suspects-feodosia",
+      "port": "FEODOSIA",
+      "title": "FEODOSIA \u2014 NO SUSPECTS IDENTIFIED",
+      "vessels": [],
+      "empty_message": "No unattributed or dark cargo vessels 90\u2013200m detected within 50km on 15 May 2026."
+    },
+    "kerch": {
+      "id": "suspects-kerch",
+      "port": "KERCH",
+      "title": "KERCH \u2014 TOP 5 SUSPECTS",
+      "vessels": [
+        {
+          "rank": 1,
+          "name": "UNATTRIBUTED",
+          "imo": "\u2014",
+          "flag": "\u2014",
+          "size": "115m \u00d7 20m",
+          "position": "45.337\u00b0N, 36.465\u00b0E",
+          "risk": 40
+        },
+        {
+          "rank": 2,
+          "name": "UNATTRIBUTED",
+          "imo": "\u2014",
+          "flag": "\u2014",
+          "size": "101m \u00d7 18m",
+          "position": "45.339\u00b0N, 36.467\u00b0E",
+          "risk": 40
+        },
+        {
+          "rank": 3,
+          "name": "UNATTRIBUTED",
+          "imo": "\u2014",
+          "flag": "\u2014",
+          "size": "109m \u00d7 19m",
+          "position": "45.337\u00b0N, 36.465\u00b0E",
+          "risk": 40
+        },
+        {
+          "rank": 4,
+          "name": "UNATTRIBUTED",
+          "imo": "\u2014",
+          "flag": "\u2014",
+          "size": "117m \u00d7 20m",
+          "position": "45.337\u00b0N, 36.467\u00b0E",
+          "risk": 40
+        },
+        {
+          "rank": 5,
+          "name": "UNATTRIBUTED",
+          "imo": "\u2014",
+          "flag": "\u2014",
+          "size": "94m \u00d7 16m",
+          "position": "45.339\u00b0N, 36.467\u00b0E",
+          "risk": 40
+        }
+      ]
+    },
+    "novorossiysk": {
+      "id": "suspects-novorossiysk",
+      "port": "NOVOROSSIYSK",
+      "title": "NOVOROSSIYSK \u2014 TOP 3 SUSPECTS",
+      "vessels": [
+        {
+          "rank": 1,
+          "name": "UNATTRIBUTED",
+          "imo": "\u2014",
+          "flag": "\u2014",
+          "size": "128m \u00d7 37m",
+          "position": "44.549\u00b0N, 37.683\u00b0E",
+          "risk": 45
+        },
+        {
+          "rank": 2,
+          "name": "UNATTRIBUTED",
+          "imo": "\u2014",
+          "flag": "\u2014",
+          "size": "195m \u00d7 7m",
+          "position": "44.631\u00b0N, 37.641\u00b0E",
+          "risk": 35
+        },
+        {
+          "rank": 3,
+          "name": "UNATTRIBUTED",
+          "imo": "\u2014",
+          "flag": "\u2014",
+          "size": "187m \u00d7 37m",
+          "position": "44.402\u00b0N, 37.545\u00b0E",
+          "risk": 35
+        }
+      ]
+    }
+  },
+  "assessment": {
+    "key_findings": [
+      "3 spoofing events detected in the Black Sea region \u2014 SEA MARINE 1 (VN), ANLAN (PA), and MERU (GQ) broadcasting false positions off the Turkish coast near Trabzon/Batumi corridor.",
+      "7 dark detections across 6 unique vessels. EVGENIYA (RU, IMO 9829071) detected twice near the Kerch Strait/Azov entrance, indicating persistent dark operations in this chokepoint.",
+      "TRANSOCEAN BARENTS (MH, IMO 8768854) operating dark in the western Black Sea \u2014 aged vessel (1986-built) with Malta flag, consistent with sanctions evasion profile.",
+      "LANKARAN (AZ, IMO 9451666) \u2014 sole Caspian dark detection near Baku, Azerbaijan. Potential Caspian-to-Black Sea grain transshipment node.",
+      "10 AIS STS transfers detected via AIS data, all in the western Black Sea/Bosphorus approaches. 20 additional optical STS detections from satellite imagery (10 AIS-lit, 10 unattributed).",
+      "Zero Sentinel-1 SAR imagery available for this date \u2014 all-weather radar detection gap means dark vessels may be undercounted."
+    ],
+    "grain_risk": [
+      "Kerch Strait remains highest-activity zone \u2014 6 unattributed vessels in the 50km radius, all chokepoint traffic. No dark vessels detected at Kerch today.",
+      "Novorossiysk shows 3 unattributed + 1 AIS-light vessel. As Russia's primary grain port, unattributed traffic here warrants monitoring for potential co-mingling of sanctioned Ukrainian grain.",
+      "No dark vessels detected at any monitored port on this single day \u2014 a notable reduction from the weekly aggregate. However, the absence of SAR coverage means this may undercount actual dark activity.",
+      "Feodosia shows zero activity \u2014 unusual for a port previously linked to grain loading. May indicate loading pause or shift to other ports."
+    ],
+    "regional_overview": [
+      "1,056 unattributed bulkers (90\u2013200m) detected across the Black Sea & Caspian \u2014 these represent the pool of vessels that could not be matched to AIS signals.",
+      "1,865 AIS-light bulkers confirmed via satellite \u2014 providing baseline for normal commercial traffic patterns.",
+      "Azov Sea corridor (Mariupol-Berdyansk-Kerch) shows low but persistent unattributed activity \u2014 consistent with controlled Russian military logistics traffic."
+    ]
+  },
+  "methodology": "Port monitoring uses a 50km radius from port center. Suspects are cargo vessels 90\u2013200m (Handysize/Handymax grain carriers) detected via satellite without AIS attribution or operating with AIS disabled. Risk scores factor vessel size, proximity to port, dark/unattributed status, and historical patterns. Data: THEIA satellite detections + AIS tracking for 15 May 2026. Geographic scope: Black Sea & Caspian Sea (36\u00b0\u201347.5\u00b0N, 27\u00b0\u201355\u00b0E)."
+}

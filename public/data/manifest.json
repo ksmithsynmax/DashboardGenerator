@@ -1,0 +1,1176 @@
+{
+  "title": "BLACK SEA & CASPIAN SEA \u2014 MARITIME INTELLIGENCE DASHBOARD",
+  "subtitle": "THEIA SATELLITE INTELLIGENCE \u2022 LIVE AIS TRACKING \u2022 ANOMALY DETECTION \u2022 15 MAY 2026",
+  "classification": "DAILY REPORT",
+  "date": "2026-05-15",
+  "datasets": {
+    "dataset_10": {
+      "name": "weekly_spoofing_events",
+      "file": "/data/weekly_spoofing_events.json"
+    },
+    "dataset_11": {
+      "name": "weekly_dark_detections",
+      "file": "/data/weekly_dark_detections.json"
+    },
+    "dataset_15": {
+      "name": "dark_bulkers_90_200m",
+      "file": "/data/dark_bulkers_90_200m.json"
+    },
+    "dataset_16": {
+      "name": "unattr_bulkers_90_200m",
+      "file": "/data/unattr_bulkers_90_200m.json"
+    },
+    "dataset_17": {
+      "name": "weekly_sts_events",
+      "file": "/data/weekly_sts_events.json"
+    },
+    "dataset_18": {
+      "name": "sentinel1_unattr_bulkers_90_200m",
+      "file": "/data/sentinel1_unattr_bulkers_90_200m.json"
+    },
+    "dataset_20": {
+      "name": "light_bulkers_90_200m",
+      "file": "/data/light_bulkers_90_200m.json"
+    },
+    "dataset_21": {
+      "name": "weekly_optical_sts_detections",
+      "file": "/data/weekly_optical_sts_detections.json"
+    }
+  },
+  "pages": [
+    {
+      "key": "weekly",
+      "label": "\ud83d\udce1 Weekly Intelligence",
+      "sections": [
+        {
+          "id": "overview",
+          "title": "DAILY INTELLIGENCE OVERVIEW \u2014 15 MAY 2026",
+          "subtitle": "Black Sea & Caspian Sea Region \u2022 Spoofing \u00b7 Dark Activity \u00b7 STS Transfers \u00b7 Satellite Detections",
+          "summary_stats": [
+            {
+              "label": "Spoofing Events",
+              "value": 3,
+              "color": "#f87171"
+            },
+            {
+              "label": "Dark Detections",
+              "value": 7,
+              "color": "#fbbf24"
+            },
+            {
+              "label": "AIS STS Transfers",
+              "value": 10,
+              "color": "#38bdf8"
+            },
+            {
+              "label": "Optical STS Detections",
+              "value": 20,
+              "color": "#a78bfa"
+            },
+            {
+              "label": "Unattributed Bulkers",
+              "value": 1056,
+              "color": "#fb923c"
+            },
+            {
+              "label": "AIS-Light Bulkers",
+              "value": 1865,
+              "color": "#4ade80"
+            }
+          ],
+          "components": [
+            {
+              "id": "wk-kpi-spoofing",
+              "type": "kpi",
+              "label": "SPOOFING EVENTS",
+              "icon": "\u26a0",
+              "color": "#FF6D99",
+              "dataset": "dataset_10",
+              "query": "count",
+              "layout": {
+                "x": 0,
+                "y": 0,
+                "w": 2,
+                "h": 1
+              }
+            },
+            {
+              "id": "wk-kpi-spoof-vessels",
+              "type": "kpi",
+              "label": "SPOOFING VESSELS",
+              "icon": "\ud83d\udea2",
+              "color": "#FF6D99",
+              "dataset": "dataset_10",
+              "query": "count_distinct:synmax_ship_id",
+              "layout": {
+                "x": 2,
+                "y": 0,
+                "w": 2,
+                "h": 1
+              }
+            },
+            {
+              "id": "wk-kpi-dark",
+              "type": "kpi",
+              "label": "DARK DETECTIONS",
+              "icon": "\ud83d\udd34",
+              "color": "#F97316",
+              "dataset": "dataset_11",
+              "query": "count",
+              "layout": {
+                "x": 4,
+                "y": 0,
+                "w": 2,
+                "h": 1
+              }
+            },
+            {
+              "id": "wk-kpi-dark-vessels",
+              "type": "kpi",
+              "label": "DARK VESSELS",
+              "icon": "\ud83d\udd34",
+              "color": "#F97316",
+              "dataset": "dataset_11",
+              "query": "count_distinct:synmax_ship_id",
+              "layout": {
+                "x": 6,
+                "y": 0,
+                "w": 2,
+                "h": 1
+              }
+            },
+            {
+              "id": "wk-kpi-unattr",
+              "type": "kpi",
+              "label": "AIS STS TRANSFERS",
+              "icon": "\u2753",
+              "color": "#E2E8F0",
+              "dataset": "dataset_17",
+              "query": "count",
+              "layout": {
+                "x": 8,
+                "y": 0,
+                "w": 2,
+                "h": 1
+              }
+            },
+            {
+              "id": "wk-kpi-unattr-tanker",
+              "type": "kpi",
+              "label": "OPTICAL STS DETECTIONS",
+              "icon": "\ud83d\udee2",
+              "color": "#E2E8F0",
+              "dataset": "dataset_21",
+              "query": "count",
+              "layout": {
+                "x": 10,
+                "y": 0,
+                "w": 2,
+                "h": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "map-and-details",
+          "components": [
+            {
+              "id": "map-weekly",
+              "type": "map",
+              "template_id": "b2342521-36b0-48de-8cd6-7fb43ec63610",
+              "datasets": [
+                "dataset_17",
+                "dataset_10",
+                "dataset_11",
+                "dataset_21"
+              ],
+              "on_click": {
+                "param": "selected_oid",
+                "column": "object_id"
+              },
+              "layout": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 7
+              }
+            },
+            {
+              "id": "sat-chip-panel",
+              "type": "detail_panel",
+              "title": "SATELLITE DETECTION CHIP",
+              "param": "selected_oid",
+              "dataset": "dataset_11",
+              "fallback_dataset": "dataset_21",
+              "match_column": "object_id",
+              "fields": [
+                {
+                  "key": "name",
+                  "label": "Vessel"
+                },
+                {
+                  "key": "imo",
+                  "label": "IMO"
+                },
+                {
+                  "key": "ship_type",
+                  "label": "Type"
+                },
+                {
+                  "key": "flag_short_code",
+                  "label": "Flag"
+                },
+                {
+                  "key": "length",
+                  "label": "Length",
+                  "suffix": "m"
+                },
+                {
+                  "key": "width",
+                  "label": "Width",
+                  "suffix": "m"
+                },
+                {
+                  "key": "heading",
+                  "label": "Heading",
+                  "suffix": "\u00b0"
+                },
+                {
+                  "key": "provider",
+                  "label": "Provider"
+                },
+                {
+                  "key": "acquired",
+                  "label": "Acquired"
+                },
+                {
+                  "key": "lat",
+                  "label": "Lat"
+                },
+                {
+                  "key": "lon",
+                  "label": "Lon"
+                }
+              ],
+              "image_field": "image_url",
+              "placeholder": {
+                "icon": "\ud83d\udef0",
+                "text": "Click a vessel icon on the map to view its satellite image"
+              },
+              "layout": {
+                "x": 8,
+                "y": 0,
+                "w": 4,
+                "h": 7
+              }
+            }
+          ]
+        },
+        {
+          "id": "spoofing-detail",
+          "components": [
+            {
+              "id": "weekly-dark-table",
+              "type": "table",
+              "title": "\ud83d\udd34 Dark Satellite Detections \u2014 Attributed Vessels (15 May 2026)",
+              "dataset": "dataset_11",
+              "columns": [
+                {
+                  "key": "object_id",
+                  "label": "OID"
+                },
+                {
+                  "key": "acquired",
+                  "label": "Acquired"
+                },
+                {
+                  "key": "name",
+                  "label": "Vessel"
+                },
+                {
+                  "key": "imo",
+                  "label": "IMO"
+                },
+                {
+                  "key": "mmsi",
+                  "label": "MMSI"
+                },
+                {
+                  "key": "flag_short_code",
+                  "label": "Flag"
+                },
+                {
+                  "key": "ship_type",
+                  "label": "Type"
+                },
+                {
+                  "key": "length",
+                  "label": "Length (m)"
+                },
+                {
+                  "key": "lat",
+                  "label": "Lat",
+                  "round": 3
+                },
+                {
+                  "key": "lon",
+                  "label": "Lon",
+                  "round": 3
+                },
+                {
+                  "key": "heading",
+                  "label": "Hdg"
+                },
+                {
+                  "key": "provider",
+                  "label": "Provider"
+                }
+              ],
+              "page_size": 10,
+              "on_row_select": {
+                "param": "selected_oid",
+                "column": "object_id"
+              },
+              "layout": {
+                "x": 0,
+                "y": 0,
+                "w": 8,
+                "h": 5
+              }
+            },
+            {
+              "id": "weekly-spoofing-detail",
+              "type": "spoofing_summary",
+              "title": "\u26a0\ufe0f SPOOFING EVENTS \u2014 3 Events / 3 Vessels",
+              "description": "Vessels broadcasting false AIS positions in the Black Sea & Caspian region on 15 May 2026",
+              "dataset": "dataset_10",
+              "vessels": [
+                {
+                  "name": "SEA MARINE 1",
+                  "imo": "9255830",
+                  "flag": "VN"
+                },
+                {
+                  "name": "ANLAN",
+                  "imo": "9346859",
+                  "flag": "PA"
+                },
+                {
+                  "name": "MERU",
+                  "imo": "9187227",
+                  "flag": "GQ"
+                }
+              ],
+              "layout": {
+                "x": 8,
+                "y": 0,
+                "w": 4,
+                "h": 5
+              }
+            }
+          ]
+        },
+        {
+          "id": "detection-chips",
+          "components": [
+            {
+              "id": "weekly-chips",
+              "type": "chip_grid",
+              "title": "SATELLITE DETECTION CHIPS \u2014 DARK VESSELS (AIS OFF)",
+              "dataset": "dataset_11",
+              "columns_per_row": 4,
+              "badge": {
+                "text": "\ud83d\udd34 DARK",
+                "color": "#EF4444"
+              },
+              "fields": [
+                "name",
+                "object_id",
+                "imo",
+                "mmsi",
+                "flag_short_code",
+                "length",
+                "ship_type",
+                "lat",
+                "lon",
+                "provider",
+                "acquired"
+              ],
+              "image_field": "image_url",
+              "layout": {
+                "x": 0,
+                "y": 0,
+                "w": 12,
+                "h": 8
+              }
+            }
+          ]
+        },
+        {
+          "id": "bulkers",
+          "title": "BULKER FOCUS \u2014 DARK & UNATTRIBUTED (90\u2013200m)",
+          "subtitle": "Black Sea & Caspian Sea \u2022 15 May 2026 \u2022 Optical & Sentinel-2 only (Sentinel-1 excluded) \u2022 6 dark \u00b7 468 unattributed",
+          "components": [
+            {
+              "id": "bulker-kpi-dark",
+              "type": "kpi",
+              "label": "DARK BULKERS 90-200M",
+              "color": "#F97316",
+              "dataset": "dataset_15",
+              "query": "count",
+              "layout": {
+                "x": 0,
+                "y": 0,
+                "w": 3,
+                "h": 1
+              }
+            },
+            {
+              "id": "bulker-kpi-dark-vessels",
+              "type": "kpi",
+              "label": "DARK VESSELS",
+              "color": "#F97316",
+              "dataset": "dataset_15",
+              "query": "count_distinct:synmax_ship_id",
+              "layout": {
+                "x": 3,
+                "y": 0,
+                "w": 3,
+                "h": 1
+              }
+            },
+            {
+              "id": "bulker-kpi-unattr",
+              "type": "kpi",
+              "label": "UNATTRIBUTED BULKERS 90-200M",
+              "color": "#FF4444",
+              "dataset": "dataset_16",
+              "query": "count",
+              "layout": {
+                "x": 6,
+                "y": 0,
+                "w": 3,
+                "h": 1
+              }
+            },
+            {
+              "id": "bulker-kpi-avg-length",
+              "type": "kpi",
+              "label": "AVG LENGTH (M)",
+              "color": "#475569",
+              "dataset": "dataset_15+dataset_16",
+              "query": "avg:length",
+              "layout": {
+                "x": 9,
+                "y": 0,
+                "w": 3,
+                "h": 1
+              }
+            },
+            {
+              "id": "map-bulker",
+              "type": "map",
+              "template_id": "d2fc1ff1-0e2d-4850-a6ac-3a98e23b3cc0",
+              "datasets": [
+                "dataset_16",
+                "dataset_15"
+              ],
+              "on_click": {
+                "param": "bulker_oid",
+                "column": "object_id"
+              },
+              "layout": {
+                "x": 0,
+                "y": 1,
+                "w": 8,
+                "h": 7
+              }
+            },
+            {
+              "id": "bulker-chip-panel",
+              "type": "detail_panel",
+              "title": "SATELLITE DETECTION CHIP",
+              "param": "bulker_oid",
+              "dataset": "dataset_15",
+              "fallback_dataset": "dataset_16",
+              "match_column": "object_id",
+              "image_field": "image_url",
+              "fields": [
+                {
+                  "key": "name",
+                  "label": "Vessel"
+                },
+                {
+                  "key": "object_id",
+                  "label": "OID"
+                },
+                {
+                  "key": "imo",
+                  "label": "IMO"
+                },
+                {
+                  "key": "mmsi",
+                  "label": "MMSI"
+                },
+                {
+                  "key": "flag_short_code",
+                  "label": "Flag"
+                },
+                {
+                  "key": "length",
+                  "label": "Length",
+                  "suffix": "m"
+                },
+                {
+                  "key": "ship_type",
+                  "label": "Type"
+                },
+                {
+                  "key": "lat",
+                  "label": "Lat"
+                },
+                {
+                  "key": "lon",
+                  "label": "Lon"
+                },
+                {
+                  "key": "heading",
+                  "label": "Heading",
+                  "suffix": "\u00b0"
+                },
+                {
+                  "key": "provider",
+                  "label": "Provider"
+                },
+                {
+                  "key": "acquired",
+                  "label": "Acquired"
+                }
+              ],
+              "placeholder": {
+                "icon": "\ud83d\udef0",
+                "text": "Click a vessel icon on the map to view its satellite image"
+              },
+              "layout": {
+                "x": 8,
+                "y": 1,
+                "w": 4,
+                "h": 5
+              }
+            },
+            {
+              "id": "bulker-size-table",
+              "type": "table",
+              "dataset": "dataset_15+dataset_16",
+              "group_by": "size_class",
+              "size_bins": [
+                {
+                  "label": "90-119m (Handysize)",
+                  "min": 90,
+                  "max": 119
+                },
+                {
+                  "label": "120-149m (Handymax)",
+                  "min": 120,
+                  "max": 149
+                },
+                {
+                  "label": "150-179m (Supramax)",
+                  "min": 150,
+                  "max": 179
+                },
+                {
+                  "label": "180-200m (Panamax)",
+                  "min": 180,
+                  "max": 200
+                }
+              ],
+              "layout": {
+                "x": 8,
+                "y": 6,
+                "w": 4,
+                "h": 2
+              }
+            }
+          ]
+        },
+        {
+          "id": "sentinel1",
+          "title": "SENTINEL-1 SAR \u2014 UNATTRIBUTED BULKERS (90\u2013200m)",
+          "subtitle": "Black Sea & Caspian Sea \u2022 15 May 2026 \u2022 588 detections \u2022 SAR radar imagery (all-weather, day/night)",
+          "accent_color": "#F75349",
+          "components": [
+            {
+              "id": "s1-kpi-total",
+              "type": "kpi",
+              "label": "S1 DETECTIONS",
+              "color": "#F75349",
+              "dataset": "dataset_18",
+              "query": "count"
+            },
+            {
+              "id": "s1-kpi-avg-length",
+              "type": "kpi",
+              "label": "AVG LENGTH (M)",
+              "color": "#F75349",
+              "dataset": "dataset_18",
+              "query": "avg:length"
+            },
+            {
+              "id": "s1-kpi-unique-dates",
+              "type": "kpi",
+              "label": "UNIQUE PASSES",
+              "color": "#F75349",
+              "dataset": "dataset_18",
+              "query": "count_distinct:acquired"
+            },
+            {
+              "id": "s1-kpi-handymax",
+              "type": "kpi",
+              "label": "HANDYMAX (120-149M)",
+              "color": "#F75349",
+              "dataset": "dataset_18",
+              "query": "count_where:length>=120,length<150"
+            },
+            {
+              "id": "map-sar",
+              "type": "map",
+              "template_id": "f58ae694-1985-4132-af85-7a7b8239528e",
+              "datasets": [
+                "dataset_18"
+              ],
+              "on_click": {
+                "param": "s1_oid",
+                "column": "object_id"
+              },
+              "layout": {
+                "x": 0,
+                "y": 1,
+                "w": 8,
+                "h": 7
+              }
+            },
+            {
+              "id": "s1-chip-panel",
+              "type": "detail_panel",
+              "title": "SENTINEL-1 SAR CHIP",
+              "param": "s1_oid",
+              "dataset": "dataset_18",
+              "match_column": "object_id",
+              "image_field": "image_url",
+              "fields": [
+                {
+                  "key": "object_id",
+                  "label": "OID"
+                },
+                {
+                  "key": "length",
+                  "label": "Length",
+                  "suffix": "m"
+                },
+                {
+                  "key": "heading",
+                  "label": "Heading",
+                  "suffix": "\u00b0"
+                },
+                {
+                  "key": "lat",
+                  "label": "Lat"
+                },
+                {
+                  "key": "lon",
+                  "label": "Lon"
+                },
+                {
+                  "key": "provider",
+                  "label": "Provider"
+                },
+                {
+                  "key": "acquired",
+                  "label": "Acquired"
+                }
+              ],
+              "placeholder": {
+                "icon": "\ud83d\udef0",
+                "text": "Click a detection icon on the map to view its SAR image"
+              },
+              "layout": {
+                "x": 8,
+                "y": 1,
+                "w": 4,
+                "h": 5
+              }
+            },
+            {
+              "id": "s1-size-table",
+              "type": "table",
+              "title": "Size Class Distribution",
+              "dataset": "dataset_18",
+              "group_by": "size_class",
+              "size_bins": [
+                {
+                  "label": "90-119m (Handysize)",
+                  "min": 90,
+                  "max": 119
+                },
+                {
+                  "label": "120-149m (Handymax)",
+                  "min": 120,
+                  "max": 149
+                },
+                {
+                  "label": "150-179m (Supramax)",
+                  "min": 150,
+                  "max": 179
+                },
+                {
+                  "label": "180-200m (Panamax)",
+                  "min": 180,
+                  "max": 200
+                }
+              ],
+              "layout": {
+                "x": 8,
+                "y": 6,
+                "w": 4,
+                "h": 2
+              }
+            }
+          ]
+        },
+        {
+          "id": "ais-light",
+          "title": "AIS-LIGHT BULKERS \u2014 SATELLITE CONFIRMED (90\u2013200m)",
+          "subtitle": "Black Sea & Caspian Sea \u2022 15 May 2026 \u2022 1,865 detections \u00b7 Vessels with active AIS matched to satellite imagery",
+          "accent_color": "#00A3E3",
+          "components": [
+            {
+              "id": "light-kpi-total",
+              "type": "kpi",
+              "label": "AIS-LIGHT DETECTIONS",
+              "color": "#00A3E3",
+              "dataset": "dataset_20",
+              "query": "count"
+            },
+            {
+              "id": "light-kpi-vessels",
+              "type": "kpi",
+              "label": "UNIQUE VESSELS",
+              "color": "#00A3E3",
+              "dataset": "dataset_20",
+              "query": "count_distinct:synmax_ship_id"
+            },
+            {
+              "id": "light-kpi-handymax",
+              "type": "kpi",
+              "label": "HANDYMAX (120-149M)",
+              "color": "#00A3E3",
+              "dataset": "dataset_20",
+              "query": "count_where:length>=120,length<150"
+            },
+            {
+              "id": "light-kpi-avg-length",
+              "type": "kpi",
+              "label": "AVG LENGTH (M)",
+              "color": "#00A3E3",
+              "dataset": "dataset_20",
+              "query": "avg:length"
+            },
+            {
+              "id": "map-light",
+              "type": "map",
+              "template_id": "d705f997-cfc4-4cbb-80a1-ba64913f7f9e",
+              "datasets": [
+                "dataset_20"
+              ],
+              "on_click": {
+                "param": "light_oid",
+                "column": "object_id"
+              },
+              "layout": {
+                "x": 0,
+                "y": 1,
+                "w": 8,
+                "h": 7
+              }
+            },
+            {
+              "id": "light-chip-panel",
+              "type": "detail_panel",
+              "title": "SATELLITE DETECTION CHIP",
+              "param": "light_oid",
+              "dataset": "dataset_20",
+              "match_column": "object_id",
+              "image_field": "image_url",
+              "fields": [
+                {
+                  "key": "name",
+                  "label": "Vessel"
+                },
+                {
+                  "key": "object_id",
+                  "label": "OID"
+                },
+                {
+                  "key": "imo",
+                  "label": "IMO"
+                },
+                {
+                  "key": "mmsi",
+                  "label": "MMSI"
+                },
+                {
+                  "key": "flag_short_code",
+                  "label": "Flag"
+                },
+                {
+                  "key": "length",
+                  "label": "Length",
+                  "suffix": "m"
+                },
+                {
+                  "key": "ship_type",
+                  "label": "Type"
+                },
+                {
+                  "key": "lat",
+                  "label": "Lat"
+                },
+                {
+                  "key": "lon",
+                  "label": "Lon"
+                },
+                {
+                  "key": "heading",
+                  "label": "Heading",
+                  "suffix": "\u00b0"
+                },
+                {
+                  "key": "provider",
+                  "label": "Provider"
+                },
+                {
+                  "key": "acquired",
+                  "label": "Acquired"
+                }
+              ],
+              "placeholder": {
+                "icon": "\ud83d\udef0",
+                "text": "Click a detection on the map to view satellite chip"
+              },
+              "layout": {
+                "x": 8,
+                "y": 1,
+                "w": 4,
+                "h": 5
+              }
+            },
+            {
+              "id": "light-size-table",
+              "type": "table",
+              "title": "Size Class Distribution",
+              "dataset": "dataset_20",
+              "group_by": "size_class",
+              "size_bins": [
+                {
+                  "label": "90-119m (Handysize)",
+                  "min": 90,
+                  "max": 119
+                },
+                {
+                  "label": "120-149m (Handymax)",
+                  "min": 120,
+                  "max": 149
+                },
+                {
+                  "label": "150-179m (Supramax)",
+                  "min": 150,
+                  "max": 179
+                },
+                {
+                  "label": "180-200m (Panamax)",
+                  "min": 180,
+                  "max": 200
+                }
+              ],
+              "layout": {
+                "x": 8,
+                "y": 6,
+                "w": 4,
+                "h": 2
+              }
+            }
+          ]
+        },
+        {
+          "id": "assessment",
+          "title": "DAILY INTELLIGENCE ASSESSMENT \u2014 15 MAY 2026",
+          "content": {
+            "key_findings": [
+              "3 spoofing events detected in the Black Sea region \u2014 SEA MARINE 1 (VN), ANLAN (PA), and MERU (GQ) broadcasting false positions off the Turkish coast near Trabzon/Batumi corridor.",
+              "7 dark detections across 6 unique vessels. EVGENIYA (RU, IMO 9829071) detected twice near the Kerch Strait/Azov entrance, indicating persistent dark operations in this chokepoint.",
+              "TRANSOCEAN BARENTS (MH, IMO 8768854) operating dark in the western Black Sea \u2014 aged vessel (1986-built) with Malta flag, consistent with sanctions evasion profile.",
+              "LANKARAN (AZ, IMO 9451666) \u2014 sole Caspian dark detection near Baku, Azerbaijan. Potential Caspian-to-Black Sea grain transshipment node.",
+              "10 AIS STS transfers detected via AIS data, all in the western Black Sea/Bosphorus approaches. 20 additional optical STS detections from satellite imagery (10 AIS-lit, 10 unattributed).",
+              "Zero Sentinel-1 SAR imagery available for this date \u2014 all-weather radar detection gap means dark vessels may be undercounted."
+            ],
+            "grain_smuggling_risk": [
+              "Kerch Strait remains highest-activity zone \u2014 6 unattributed vessels in the 50km radius, all chokepoint traffic. No dark vessels detected at Kerch today.",
+              "Novorossiysk shows 3 unattributed + 1 AIS-light vessel. As Russia's primary grain port, unattributed traffic here warrants monitoring for potential co-mingling of sanctioned Ukrainian grain.",
+              "No dark vessels detected at any monitored port on this single day \u2014 a notable reduction from the weekly aggregate. However, the absence of SAR coverage means this may undercount actual dark activity.",
+              "Feodosia shows zero activity \u2014 unusual for a port previously linked to grain loading. May indicate loading pause or shift to other ports."
+            ],
+            "regional_overview": [
+              "1,056 unattributed bulkers (90\u2013200m) detected across the Black Sea & Caspian \u2014 these represent the pool of vessels that could not be matched to AIS signals.",
+              "1,865 AIS-light bulkers confirmed via satellite \u2014 providing baseline for normal commercial traffic patterns.",
+              "Azov Sea corridor (Mariupol-Berdyansk-Kerch) shows low but persistent unattributed activity \u2014 consistent with controlled Russian military logistics traffic."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "grain",
+      "label": "\ud83c\udf3e Grain Risk Assessment",
+      "sections": [
+        {
+          "id": "grain-overview",
+          "title": "GRAIN SMUGGLING RISK ASSESSMENT \u2014 PORT-BY-PORT ANALYSIS",
+          "subtitle": "Dark & Unattributed Cargo Vessels 90\u2013200m \u2022 15 May 2026 \u2022 Top 5 Suspects Per Port",
+          "components": [],
+          "ports": [
+            {
+              "id": "mariupol",
+              "name": "MARIUPOL",
+              "icon": "\ud83c\udfed",
+              "coords": "46.95\u00b0N, 37.55\u00b0E",
+              "description": "Major Azov Sea grain terminal. Russian-occupied since 2022. Limited commercial activity but strategic grain loading point.",
+              "risk": "LOW RISK",
+              "risk_color": "#38bdf8",
+              "stats": {
+                "dark": 0,
+                "unattributed": 2,
+                "ais_light": 1,
+                "total": 3
+              },
+              "map_template_id": "efa4ea93-48e5-4a7f-b905-6b90cd3495fb",
+              "map_datasets": [
+                32,
+                33,
+                34,
+                31
+              ],
+              "suspects": [
+                {
+                  "rank": 1,
+                  "name": "UNATTRIBUTED",
+                  "imo": "\u2014",
+                  "flag": "\u2014",
+                  "size": "136m \u00d7 24m",
+                  "position": "47.044\u00b0N, 37.498\u00b0E",
+                  "risk": 45
+                },
+                {
+                  "rank": 2,
+                  "name": "UNATTRIBUTED",
+                  "imo": "\u2014",
+                  "flag": "\u2014",
+                  "size": "115m \u00d7 20m",
+                  "position": "47.059\u00b0N, 37.509\u00b0E",
+                  "risk": 40
+                }
+              ]
+            },
+            {
+              "id": "berdyansk",
+              "name": "BERDYANSK",
+              "icon": "\u2693",
+              "coords": "46.76\u00b0N, 36.80\u00b0E",
+              "description": "Azov Sea port under Russian control. Used for grain exports from occupied territories. Shallow draft limits vessel size.",
+              "risk": "LOW RISK",
+              "risk_color": "#38bdf8",
+              "stats": {
+                "dark": 0,
+                "unattributed": 2,
+                "ais_light": 0,
+                "total": 2
+              },
+              "map_template_id": "94faf881-b616-45a7-bc57-a2be0add54c3",
+              "map_datasets": [
+                35,
+                22,
+                23
+              ],
+              "suspects": [
+                {
+                  "rank": 1,
+                  "name": "UNATTRIBUTED",
+                  "imo": "\u2014",
+                  "flag": "\u2014",
+                  "size": "133m \u00d7 23m",
+                  "position": "46.753\u00b0N, 36.775\u00b0E",
+                  "risk": 45
+                },
+                {
+                  "rank": 2,
+                  "name": "UNATTRIBUTED",
+                  "imo": "\u2014",
+                  "flag": "\u2014",
+                  "size": "111m \u00d7 19m",
+                  "position": "46.752\u00b0N, 36.777\u00b0E",
+                  "risk": 40
+                }
+              ]
+            },
+            {
+              "id": "feodosia",
+              "name": "FEODOSIA",
+              "icon": "\ud83d\udea2",
+              "coords": "45.04\u00b0N, 35.40\u00b0E",
+              "description": "Crimean port with grain terminal. Under Russian control since 2014. Key node in sanctioned grain export network.",
+              "risk": "MINIMAL RISK",
+              "risk_color": "#4ade80",
+              "stats": {
+                "dark": 0,
+                "unattributed": 0,
+                "ais_light": 0,
+                "total": 0
+              },
+              "map_template_id": "8de2a4eb-5e79-4700-85be-f90bda344997",
+              "map_datasets": [
+                24,
+                36
+              ],
+              "suspects": []
+            },
+            {
+              "id": "kerch",
+              "name": "KERCH",
+              "icon": "\ud83c\udf0a",
+              "coords": "45.35\u00b0N, 36.47\u00b0E",
+              "description": "Strategic Kerch Strait gateway between Azov and Black Sea. All Azov-bound traffic transits here. High surveillance value.",
+              "risk": "MODERATE RISK",
+              "risk_color": "#fbbf24",
+              "stats": {
+                "dark": 0,
+                "unattributed": 6,
+                "ais_light": 0,
+                "total": 6
+              },
+              "map_template_id": "71615512-20fa-4628-b7ca-538084fe753a",
+              "map_datasets": [
+                25,
+                26,
+                27,
+                37
+              ],
+              "suspects": [
+                {
+                  "rank": 1,
+                  "name": "UNATTRIBUTED",
+                  "imo": "\u2014",
+                  "flag": "\u2014",
+                  "size": "115m \u00d7 20m",
+                  "position": "45.337\u00b0N, 36.465\u00b0E",
+                  "risk": 40
+                },
+                {
+                  "rank": 2,
+                  "name": "UNATTRIBUTED",
+                  "imo": "\u2014",
+                  "flag": "\u2014",
+                  "size": "101m \u00d7 18m",
+                  "position": "45.339\u00b0N, 36.467\u00b0E",
+                  "risk": 40
+                },
+                {
+                  "rank": 3,
+                  "name": "UNATTRIBUTED",
+                  "imo": "\u2014",
+                  "flag": "\u2014",
+                  "size": "109m \u00d7 19m",
+                  "position": "45.337\u00b0N, 36.465\u00b0E",
+                  "risk": 40
+                },
+                {
+                  "rank": 4,
+                  "name": "UNATTRIBUTED",
+                  "imo": "\u2014",
+                  "flag": "\u2014",
+                  "size": "117m \u00d7 20m",
+                  "position": "45.337\u00b0N, 36.467\u00b0E",
+                  "risk": 40
+                },
+                {
+                  "rank": 5,
+                  "name": "UNATTRIBUTED",
+                  "imo": "\u2014",
+                  "flag": "\u2014",
+                  "size": "94m \u00d7 16m",
+                  "position": "45.339\u00b0N, 36.467\u00b0E",
+                  "risk": 40
+                }
+              ]
+            },
+            {
+              "id": "novorossiysk",
+              "name": "NOVOROSSIYSK",
+              "icon": "\ud83c\udfd7\ufe0f",
+              "coords": "44.72\u00b0N, 37.78\u00b0E",
+              "description": "Russia's largest Black Sea commercial port. Major legitimate grain exporter but also potential co-mingling point for sanctioned cargo.",
+              "risk": "LOW RISK",
+              "risk_color": "#38bdf8",
+              "stats": {
+                "dark": 0,
+                "unattributed": 3,
+                "ais_light": 1,
+                "total": 4
+              },
+              "map_template_id": "95411aff-3bda-46d6-a541-689fd2631395",
+              "map_datasets": [
+                38,
+                28,
+                29,
+                30
+              ],
+              "suspects": [
+                {
+                  "rank": 1,
+                  "name": "UNATTRIBUTED",
+                  "imo": "\u2014",
+                  "flag": "\u2014",
+                  "size": "128m \u00d7 37m",
+                  "position": "44.549\u00b0N, 37.683\u00b0E",
+                  "risk": 45
+                },
+                {
+                  "rank": 2,
+                  "name": "UNATTRIBUTED",
+                  "imo": "\u2014",
+                  "flag": "\u2014",
+                  "size": "195m \u00d7 7m",
+                  "position": "44.631\u00b0N, 37.641\u00b0E",
+                  "risk": 35
+                },
+                {
+                  "rank": 3,
+                  "name": "UNATTRIBUTED",
+                  "imo": "\u2014",
+                  "flag": "\u2014",
+                  "size": "187m \u00d7 37m",
+                  "position": "44.402\u00b0N, 37.545\u00b0E",
+                  "risk": 35
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "methodology",
+          "title": "METHODOLOGY",
+          "text": "Port monitoring uses a 50km radius from port center. Suspects are cargo vessels 90\u2013200m (Handysize/Handymax grain carriers) detected via satellite without AIS attribution or operating with AIS disabled. Risk scores factor vessel size, proximity to port, dark/unattributed status, and historical patterns. Data: THEIA satellite detections + AIS tracking for 15 May 2026. Geographic scope: Black Sea & Caspian Sea (36\u00b0\u201347.5\u00b0N, 27\u00b0\u201355\u00b0E)."
+        }
+      ]
+    }
+  ]
+}

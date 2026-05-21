@@ -1,0 +1,172 @@
+/* DashboardGenerator - Minimal app styles */
+/* Your Mantine theme handles most styling */
+/* Add Theia-specific overrides here */
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #181926;
+}
+
+.mantine-Card-root,
+.mantine-Paper-root {
+  background-color: #24263c !important;
+  border: 1px solid #393c56 !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+
+.kpi-card {
+  background-color: #181926 !important;
+}
+
+.port-stat-card {
+  background-color: #181926 !important;
+}
+
+.chip-detection-card {
+  background-color: #181926 !important;
+}
+
+.spoofing-vessel-card {
+  background-color: #181926 !important;
+}
+
+.detail-panel-card {
+  background-color: #181926 !important;
+}
+
+.dashboard-header-card {
+  padding: 36px 32px !important;
+}
+
+.dashboard-header-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 26px;
+}
+
+.dashboard-header-logo {
+  width: 220px;
+  height: auto;
+}
+
+.dashboard-header-badge {
+  align-self: flex-start;
+  background-color: rgba(0, 108, 215, 0.18) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(0, 108, 215, 0.45) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.35px !important;
+  text-transform: uppercase !important;
+}
+
+.dashboard-header-title {
+  color: #ffffff !important;
+  text-transform: none !important;
+  font-size: 34px !important;
+  line-height: 1.12 !important;
+  font-weight: 600 !important;
+  margin: 0 0 10px 0 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.dashboard-header-subtitle {
+  font-size: 12px !important;
+  line-height: 1.35 !important;
+  font-weight: 700 !important;
+  margin: 0 0 6px 0 !important;
+  color: #9aa2b3 !important;
+}
+
+.dashboard-table {
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  border: 1px solid #393c56 !important;
+  border-radius: 4px !important;
+  overflow: hidden !important;
+}
+
+.dashboard-table thead th {
+  background-color: #181926 !important;
+  color: #ffffff !important;
+  border-bottom: 1px solid #393c56 !important;
+}
+
+.dashboard-table tbody td {
+  background-color: #24263c !important;
+  color: #ffffff !important;
+  border-bottom: 1px solid #393c56 !important;
+}
+
+.dashboard-table tbody tr:last-child td {
+  border-bottom: none !important;
+}
+
+.dashboard-table th,
+.dashboard-table td {
+  padding: 12px 14px !important;
+}
+
+.dashboard-tabs .mantine-Tabs-list {
+  background-color: transparent !important;
+  border-bottom: none !important;
+  gap: 10px !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+.dashboard-tabs .mantine-Tabs-list::before {
+  display: none !important;
+  border: none !important;
+}
+
+.dashboard-tabs .mantine-Tabs-list::after {
+  display: none !important;
+  border: none !important;
+}
+
+.dashboard-tabs {
+  --tabs-list-border-width: 0px !important;
+}
+
+.dashboard-tabs .mantine-Tabs-tab {
+  min-width: 140px !important;
+  padding: 10px 16px !important;
+  color: #393c56 !important;
+  background: transparent !important;
+  border: 1px solid #393c56 !important;
+  border-radius: 6px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  line-height: 1.2 !important;
+  justify-content: center !important;
+}
+
+.dashboard-tabs .mantine-Tabs-tab::before {
+  display: none !important;
+}
+
+.dashboard-tabs .mantine-Tabs-tab[data-active='true'] {
+  color: #ffffff !important;
+  background: rgba(0, 108, 215, 0.18) !important;
+  border: 2px solid #006cd7 !important;
+}
+
+.html-content-card h1,
+.html-content-card h2,
+.html-content-card h3,
+.html-content-card h4,
+.html-content-card h5,
+.html-content-card h6 {
+  color: #ffffff !important;
+}
+
+.html-content-card li::marker {
+  color: currentColor !important;
+}
