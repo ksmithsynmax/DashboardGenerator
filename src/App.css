@@ -17,7 +17,9 @@ body {
 }
 
 .mantine-Badge-root {
-  font-size: 12px !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.35px !important;
   min-height: 24px !important;
   padding-left: 10px !important;
   padding-right: 10px !important;
