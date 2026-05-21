@@ -116,6 +116,15 @@ function getFlagCode(row, val) {
   return /^[a-z]{2}$/.test(code) ? code : null
 }
 
+function shouldRenderWithoutCard(component) {
+  const title = stripEmojis(String(component?.title || component?.id || '')).toLowerCase()
+  return (
+    title.includes('dark satellite detections') ||
+    title.includes('spoofing events') ||
+    (title.includes('satellite detection chips') && title.includes('dark vessels'))
+  )
+}
+
 // ─── KPI Card ───
 function KpiCard({ component, datasets }) {
   const data = resolveDataset(component.dataset, datasets)
@@ -159,6 +168,7 @@ function KpiCard({ component, datasets }) {
 function DetectionTable({ component, datasets }) {
   const data = resolveDataset(component.dataset, datasets)
   const columns = component.columns || []
+  const renderWithoutCard = shouldRenderWithoutCard(component)
 
   if (component.size_bins) {
     return <SizeBinTable component={component} data={data} />
@@ -175,7 +185,7 @@ function DetectionTable({ component, datasets }) {
 
   const tableContent = (
     <>
-      {component.title && <Text fw={700} size="sm" mb="sm">{stripEmojis(component.title)}</Text>}
+      {component.title && <Text fw={600} size="20px" c="#ffffff" mt={16} mb="sm">{stripEmojis(component.title)}</Text>}
       <Box style={{ overflowX: 'auto' }}>
         <Table className="dashboard-table" style={{ fontSize: '13px' }}>
           <Table.Thead>
@@ -218,6 +228,10 @@ function DetectionTable({ component, datasets }) {
     </>
   )
 
+  if (renderWithoutCard) {
+    return <Box>{tableContent}</Box>
+  }
+
   return <Card shadow="sm" padding="md" radius="md" withBorder>{tableContent}</Card>
 }
 
@@ -226,6 +240,7 @@ function SizeBinTable({ component, data }) {
   const bins = component.size_bins || []
   const isMultiSource = (component.dataset || '').includes('+')
   const sources = isMultiSource ? (component.dataset || '').split('+').map(s => s.trim()) : null
+  const displayTitle = 'Size Class Distribution'
 
   // Build rows: if multi-source, show a Source column with counts per source
   const rows = []
@@ -256,8 +271,8 @@ function SizeBinTable({ component, data }) {
   const totalCount = rows.reduce((s, r) => s + r.count, 0)
 
   return (
-    <Card shadow="sm" padding="md" radius="md" withBorder>
-      <Text fw={700} size="sm" mb="sm">{component.title || 'Size Distribution'}</Text>
+    <Box>
+      <Text fw={600} size="20px" c="#ffffff" mt={16} mb="sm">{displayTitle}</Text>
       <Table className="dashboard-table" style={{ fontSize: '13px' }}>
         <Table.Thead>
           <Table.Tr>
@@ -292,16 +307,17 @@ function SizeBinTable({ component, data }) {
           </Table.Tr>
         </Table.Tbody>
       </Table>
-    </Card>
+    </Box>
   )
 }
 
 // ─── Spoofing Summary ───
 function SpoofingSummary({ component }) {
   const vessels = component.vessels || []
-  return (
-    <Card shadow="sm" padding="md" radius="md" withBorder>
-      <Text fw={700} size="sm" mb={4}>{stripEmojis(component.title)}</Text>
+  const displayTitle = toTitleCase(stripEmojis(component.title || ''))
+  const content = (
+    <>
+      <Text fw={600} size="20px" c="#ffffff" mt={16} mb={4}>{displayTitle}</Text>
       {component.description && <Text size="xs" c="#888F9E" mb="md">{stripEmojis(component.description)}</Text>}
       <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing={8}>
         {vessels.map((v, i) => (
@@ -315,6 +331,16 @@ function SpoofingSummary({ component }) {
           </Paper>
         ))}
       </SimpleGrid>
+    </>
+  )
+
+  if (shouldRenderWithoutCard(component)) {
+    return <Box>{content}</Box>
+  }
+
+  return (
+    <Card shadow="sm" padding="md" radius="md" withBorder>
+      {content}
     </Card>
   )
 }
@@ -325,6 +351,8 @@ function ChipGrid({ component, datasets }) {
   const rawFields = component.fields || ['name', 'imo', 'mmsi', 'ship_type', 'flag_short_code']
   const fields = rawFields.map(f => typeof f === 'string' ? { key: f, label: f } : f)
   const imageField = component.image_field || 'image_url'
+  const renderWithoutCard = shouldRenderWithoutCard(component)
+  const displayTitle = toTitleCase(stripEmojis(component.title || '')).replace(/\bAis\b/g, 'AIS')
 
   if (!data.length) {
     return (
@@ -335,15 +363,25 @@ function ChipGrid({ component, datasets }) {
     )
   }
 
-  return (
-    <Card shadow="sm" padding="md" radius="md" withBorder>
-      <Group mb="sm">
-        <Text fw={700} size="sm">{stripEmojis(component.title)}</Text>
-        <Badge color="red" size="sm" variant="light">{data.length} DETECTIONS</Badge>
+  const content = (
+    <>
+      <Group mb="sm" align="flex-end">
+        <Text fw={600} size="20px" c="#ffffff" mt={16}>{displayTitle}</Text>
+        <Badge size="sm" variant="filled"
+          style={{
+            marginTop: 16,
+            backgroundColor: '#FFA500',
+            color: '#111326',
+            minHeight: 22,
+            display: 'inline-flex',
+            alignItems: 'center',
+          }}>
+          {data.length} DETECTIONS
+        </Badge>
       </Group>
       <SimpleGrid cols={{ base: 1, sm: 2, md: component.columns_per_row || 4 }} spacing={8}>
         {data.slice(0, 24).map((item, i) => (
-          <Paper key={i} p="xs" radius="md" withBorder
+          <Paper key={i} className="chip-detection-card" p="xs" radius="md" withBorder
             style={{ overflow: 'hidden' }}>
             <div style={{ position: 'relative' }}>
               {item[imageField] ? (
@@ -355,12 +393,12 @@ function ChipGrid({ component, datasets }) {
                   <Text size="xs" c="#475569">No image available</Text>
                 </div>
               )}
-              <Badge size="xs" color="red" variant="filled"
-                style={{ position: 'absolute', top: 6, right: 6 }}>
-                🔴 DARK
+              <Badge size="xs" variant="filled"
+                style={{ position: 'absolute', top: 6, right: 6, backgroundColor: '#FFA500', color: '#111326' }}>
+                DARK
               </Badge>
             </div>
-            <Text fw={700} size="sm" c="white" truncate="end">
+            <Text fw={700} size="sm" c="white" truncate="end" mb={6}>
               {item.name || 'UNIDENTIFIED'}
             </Text>
             <Text size="xs" c="#888F9E" mt={2}>OID: {item.object_id}</Text>
@@ -375,6 +413,16 @@ function ChipGrid({ component, datasets }) {
           </Paper>
         ))}
       </SimpleGrid>
+    </>
+  )
+
+  if (renderWithoutCard) {
+    return <Box>{content}</Box>
+  }
+
+  return (
+    <Card shadow="sm" padding="md" radius="md" withBorder>
+      {content}
     </Card>
   )
 }
@@ -420,7 +468,13 @@ function DetailPanel({ component, datasets, height }) {
     <Card className="detail-panel-card" shadow="sm" padding="md" radius="md" withBorder style={{ height: height || '100%' }}>
       <Group justify="space-between" mb="sm">
         <Text fw={700} size="sm">{stripEmojis(component.title || 'Detection Chip')}</Text>
-        <Badge size="xs" color="orange" variant="light">OID: {item[matchCol]}</Badge>
+        <Badge
+          size="xs"
+          variant="filled"
+          style={{ backgroundColor: '#006CD7', color: '#ffffff' }}
+        >
+          OID: {item[matchCol]}
+        </Badge>
       </Group>
       <div style={{ marginBottom: 12 }}>
         {item[imageField] ? (
@@ -511,7 +565,7 @@ function MapComponent({ component, mapConfigs, mapDatasets, height = 560 }) {
 // ═══════════════════════════════════════════════════
 
 // ─── Port Card ───
-function PortCard({ port }) {
+function PortCard({ port, withinCard = false }) {
   const statItems = [
     { label: 'DARK', value: port.stats.dark, color: '#f87171' },
     { label: 'UNATTRIBUTED', value: port.stats.unattributed, color: '#fb923c' },
@@ -519,10 +573,10 @@ function PortCard({ port }) {
     { label: 'TOTAL', value: port.stats.total, color: '#e2e8f0' },
   ]
 
-  return (
-    <Card shadow="sm" padding="lg" radius="md" withBorder>
+  const content = (
+    <>
       <Group justify="space-between" mb="sm">
-        <Text fw={800} size="lg" c="#ffffff">{port.name}</Text>
+        <Text fw={800} size="lg" c="#ffffff">{`${port.name} — 50km Detections`}</Text>
         <Badge
           size="lg"
           variant="light"
@@ -542,23 +596,43 @@ function PortCard({ port }) {
           </Paper>
         ))}
       </SimpleGrid>
+    </>
+  )
+
+  if (withinCard) {
+    return <Box>{content}</Box>
+  }
+
+  return (
+    <Card shadow="sm" padding="lg" radius="md" withBorder>
+      {content}
     </Card>
   )
 }
 
 // ─── Suspect Table ───
-function SuspectTable({ suspect }) {
+function SuspectTable({ suspect, withinCard = false }) {
   if (!suspect.vessels || suspect.vessels.length === 0) {
-    return (
-      <Card shadow="sm" padding="lg" radius="md" withBorder>
+    const emptyContent = (
+      <>
         <Text fw={700} size="sm" c="#4ade80" mb="xs">{suspect.title}</Text>
         <Text size="sm" c="#888F9E">{suspect.empty_message || 'No suspects identified.'}</Text>
+      </>
+    )
+
+    if (withinCard) {
+      return <Box>{emptyContent}</Box>
+    }
+
+    return (
+      <Card shadow="sm" padding="lg" radius="md" withBorder>
+        {emptyContent}
       </Card>
     )
   }
 
-  return (
-    <Card shadow="sm" padding="lg" radius="md" withBorder>
+  const tableContent = (
+    <>
       <Text fw={700} size="sm" c="#fbbf24" mb={4}>{suspect.title}</Text>
       <Text size="xs" c="#888F9E" mb="sm">
         Unattributed & dark cargo vessels 90–200m within 50km • Ranked by risk score
@@ -593,6 +667,16 @@ function SuspectTable({ suspect }) {
           </Table.Tbody>
         </Table>
       </Box>
+    </>
+  )
+
+  if (withinCard) {
+    return <Box>{tableContent}</Box>
+  }
+
+  return (
+    <Card shadow="sm" padding="lg" radius="md" withBorder>
+      {tableContent}
     </Card>
   )
 }
@@ -600,9 +684,9 @@ function SuspectTable({ suspect }) {
 // ─── Assessment Panel ───
 function AssessmentPanel({ assessment }) {
   const sections = [
-    { title: 'KEY FINDINGS', items: assessment.key_findings, color: '#f87171' },
-    { title: 'GRAIN SMUGGLING RISK', items: assessment.grain_risk, color: '#fbbf24' },
-    { title: 'REGIONAL OVERVIEW', items: assessment.regional_overview, color: '#38bdf8' },
+    { title: 'KEY FINDINGS', items: assessment.key_findings },
+    { title: 'GRAIN SMUGGLING RISK', items: assessment.grain_risk },
+    { title: 'REGIONAL OVERVIEW', items: assessment.regional_overview },
   ]
 
   return (
@@ -611,11 +695,11 @@ function AssessmentPanel({ assessment }) {
       <Stack gap="lg">
         {sections.map(s => (
           <Box key={s.title}>
-            <Text fw={700} size="sm" c={s.color} mb="xs">{s.title}</Text>
+            <Text fw={700} size="sm" c="#ffffff" mb="xs">{s.title}</Text>
             <Stack gap={6}>
               {s.items.map((item, i) => (
                 <Group key={i} gap="xs" align="flex-start" wrap="nowrap">
-                  <Text c={s.color} size="sm" mt={1}>•</Text>
+                  <Text c="#888F9E" size="sm" mt={1}>•</Text>
                   <Text size="sm" c="#e2e8f0" style={{ lineHeight: 1.6 }}>{item}</Text>
                 </Group>
               ))}
@@ -655,22 +739,19 @@ function GrainPage({ grainData, mapConfigs, mapDatasets }) {
         if (!port) return null
 
         return (
-          <Box key={portKey}>
-            <PortCard port={port} />
-            <Box mt={8}>
-              <SuspectTable suspect={suspect} />
-            </Box>
+          <Card key={portKey} shadow="sm" padding="lg" radius="md" withBorder>
+            <PortCard port={port} withinCard />
             {port.map_id && mapConfigs[port.map_id] && (
-              <Card shadow="sm" padding="md" radius="md" withBorder mt={8}>
-                <Text size="sm" fw={600} c="#ffffff" mb={8}>
-                  {stripEmojis(mapConfigs[port.map_id].name || `${port.name} Map`)}
-                </Text>
+              <Box mt={8}>
                 <Box style={{ borderRadius: 8, overflow: 'hidden' }}>
                   <DeckMap mapConfig={mapConfigs[port.map_id]} datasets={mapDatasets} height={450} />
                 </Box>
-              </Card>
+              </Box>
             )}
-          </Box>
+            <Box mt={8}>
+              <SuspectTable suspect={suspect} withinCard />
+            </Box>
+          </Card>
         )
       })}
 
@@ -871,10 +952,12 @@ export default function App() {
           </Card>
 
           <Tabs className="dashboard-tabs" value={activeTabKey} onChange={(val) => val && setActiveTab(val)}>
-            <Card shadow="sm" padding="md" radius="md" withBorder mb={8}>
-              <Tabs.List mt={0} mb={0}>
-                {pages.map(p => <Tabs.Tab key={p.key} value={p.key}>{stripEmojis(p.label)}</Tabs.Tab>)}
-              </Tabs.List>
+            <Card shadow="sm" padding={0} radius="md" withBorder mb={8}>
+              <Box px={32} pt={16} pb={16}>
+                <Tabs.List mt={0} mb={0}>
+                  {pages.map(p => <Tabs.Tab key={p.key} value={p.key}>{stripEmojis(p.label)}</Tabs.Tab>)}
+                </Tabs.List>
+              </Box>
             </Card>
 
             {pages.map(page => {
