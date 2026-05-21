@@ -287,17 +287,25 @@ function SizeBinTable({ component, data }) {
               <Table.Td style={{ fontSize: '12px' }}>{r.label}</Table.Td>
               {isMultiSource && (
                 <Table.Td style={{ fontSize: '12px' }}>
+                  {(() => {
+                    const source = String(r.source || '').toLowerCase()
+                    const badgeStyle = source === 'dark'
+                      ? { backgroundColor: '#FFA500', color: '#111326' }
+                      : source === 'unattributed'
+                        ? { backgroundColor: '#F75349', color: '#111326' }
+                        : source === 'light' || source === 'ais-light'
+                          ? { backgroundColor: '#1CC86B', color: '#111326' }
+                          : { backgroundColor: '#393C56', color: '#ffffff' }
+                    return (
                   <Badge
                     size="xs"
                     variant="filled"
-                    style={
-                      r.source === 'Dark'
-                        ? { backgroundColor: '#FFA500', color: '#111326' }
-                        : { backgroundColor: '#F75349', color: '#111326' }
-                    }
+                    styles={{ root: { ...badgeStyle, border: 'none' } }}
                   >
                     {r.source}
                   </Badge>
+                    )
+                  })()}
                 </Table.Td>
               )}
               <Table.Td style={{ fontSize: '12px', textAlign: 'right', fontVariantNumeric: 'tabular-nums' }}>
@@ -579,16 +587,21 @@ function PortCard({ port, withinCard = false }) {
     { label: 'AIS-LIGHT', value: port.stats.ais_light, color: '#4ade80' },
     { label: 'TOTAL', value: port.stats.total, color: '#e2e8f0' },
   ]
+  const riskText = String(port.risk || '').toLowerCase()
+  const riskBadgeStyle = riskText.includes('moderate') || riskText.includes('high')
+    ? { backgroundColor: '#F75349', color: '#111326' }
+    : riskText.includes('minimal')
+      ? { backgroundColor: '#FFA500', color: '#111326' }
+      : { backgroundColor: '#1CC86B', color: '#111326' }
 
   const content = (
     <>
       <Group justify="space-between" mb="sm">
         <Text fw={800} size="lg" c="#ffffff">{`${port.name} — 50km Detections`}</Text>
         <Badge
-          size="lg"
-          variant="light"
-          color={port.risk_color === '#4ade80' ? 'green' : port.risk_color === '#fbbf24' ? 'yellow' : 'blue'}
-          styles={{ root: { border: `1px solid ${port.risk_color}40` } }}
+          size="sm"
+          variant="filled"
+          styles={{ root: { ...riskBadgeStyle, border: 'none' } }}
         >
           {port.risk}
         </Badge>
@@ -622,7 +635,7 @@ function SuspectTable({ suspect, withinCard = false }) {
   if (!suspect.vessels || suspect.vessels.length === 0) {
     const emptyContent = (
       <>
-        <Text fw={700} size="sm" c="#4ade80" mb="xs">{suspect.title}</Text>
+        <Text fw={700} size="sm" c="#ffffff" mb="xs">{suspect.title}</Text>
         <Text size="sm" c="#888F9E">{suspect.empty_message || 'No suspects identified.'}</Text>
       </>
     )
@@ -640,7 +653,7 @@ function SuspectTable({ suspect, withinCard = false }) {
 
   const tableContent = (
     <>
-      <Text fw={700} size="sm" c="#fbbf24" mb={4}>{suspect.title}</Text>
+      <Text fw={700} size="sm" c="#ffffff" mb={4}>{suspect.title}</Text>
       <Text size="xs" c="#888F9E" mb="sm">
         Unattributed & dark cargo vessels 90–200m within 50km • Ranked by risk score
       </Text>
@@ -667,7 +680,7 @@ function SuspectTable({ suspect, withinCard = false }) {
                 <Table.Td style={{ fontSize: '12px', color: '#888F9E' }}>{v.size}</Table.Td>
                 <Table.Td style={{ fontSize: '12px', color: '#888F9E' }}>{v.position}</Table.Td>
                 <Table.Td style={{ fontSize: '12px' }}>
-                  <Text span fw={700} c={v.risk >= 40 ? '#fbbf24' : '#fb923c'}>{v.risk}</Text>
+                  <Text span fw={700} c="#ffffff">{v.risk}</Text>
                 </Table.Td>
               </Table.Tr>
             ))}
@@ -707,7 +720,7 @@ function AssessmentPanel({ assessment }) {
               {s.items.map((item, i) => (
                 <Group key={i} gap="xs" align="flex-start" wrap="nowrap">
                   <Text c="#888F9E" size="sm" mt={1}>•</Text>
-                  <Text size="sm" c="#e2e8f0" style={{ lineHeight: 1.6 }}>{item}</Text>
+                  <Text size="sm" c="#888F9E" style={{ lineHeight: 1.6 }}>{item}</Text>
                 </Group>
               ))}
             </Stack>
@@ -733,9 +746,8 @@ function GrainPage({ grainData, mapConfigs, mapDatasets }) {
   return (
     <Stack gap={8}>
       {/* Header */}
-      <Card shadow="sm" padding="lg" radius="md" withBorder
-        style={{ background: 'linear-gradient(135deg, var(--mantine-color-dark-6) 0%, var(--mantine-color-dark-7) 100%)' }}>
-        <Text fw={800} size="xl" c="#fbbf24">{header.title}</Text>
+      <Card className="grain-header-card" shadow="sm" padding="lg" radius="md" withBorder>
+        <Text fw={800} size="xl" c="#ffffff">{header.title}</Text>
         <Text size="sm" c="#888F9E" mt={4}>{header.subtitle}</Text>
       </Card>
 

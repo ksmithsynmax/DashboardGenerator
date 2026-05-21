@@ -32,6 +32,11 @@ body {
   background-color: #181926 !important;
 }
 
+.grain-header-card {
+  background-color: rgba(255, 207, 92, 0.1) !important;
+  border: 1px solid #ffcf5c !important;
+}
+
 .detail-panel-card {
   background-color: #181926 !important;
 }
@@ -55,9 +60,9 @@ body {
 
 .dashboard-header-badge {
   align-self: flex-start;
-  background-color: rgba(0, 108, 215, 0.18) !important;
+  background-color: #006cd7 !important;
   color: #ffffff !important;
-  border: 1px solid rgba(0, 108, 215, 0.45) !important;
+  border: none !important;
   font-size: 11px !important;
   font-weight: 600 !important;
   letter-spacing: 0.35px !important;
