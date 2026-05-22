@@ -14,6 +14,7 @@ import {
   Box,
   Container,
   Paper,
+  Select,
   Loader,
   ThemeIcon,
   Divider,
@@ -298,7 +299,14 @@ function SizeBinTable({ component, data }) {
                           : { backgroundColor: '#393C56', color: '#ffffff' }
                     return (
                   <Badge
-                    size="xs"
+                    className={`badge-keep-original ${
+                      source === 'dark'
+                        ? 'badge-dark'
+                        : source === 'unattributed'
+                          ? 'badge-unattributed'
+                          : undefined
+                    }`}
+                    size="sm"
                     variant="filled"
                     styles={{ root: { ...badgeStyle, border: 'none' } }}
                   >
@@ -408,7 +416,7 @@ function ChipGrid({ component, datasets }) {
                   <Text size="xs" c="#475569">No image available</Text>
                 </div>
               )}
-              <Badge size="xs" variant="filled"
+              <Badge className="badge-dark" size="sm" variant="filled"
                 style={{ position: 'absolute', top: 6, right: 6, backgroundColor: '#FFA500', color: '#111326' }}>
                 DARK
               </Badge>
@@ -443,7 +451,7 @@ function ChipGrid({ component, datasets }) {
 }
 
 // ─── Detail Panel (Satellite Detection Chip) ───
-function DetailPanel({ component, datasets, height }) {
+function DetailPanel({ component, datasets, height, selectedId }) {
   const data = resolveDataset(component.dataset, datasets)
   const fallbackData = component.fallback_dataset ? resolveDataset(component.fallback_dataset, datasets) : []
   const allData = [...data, ...fallbackData]
@@ -452,9 +460,9 @@ function DetailPanel({ component, datasets, height }) {
   const imageField = component.image_field || 'image_url'
   const matchCol = component.match_column || 'object_id'
 
-  // In the standalone app we don't have dashboard params, so show first item as preview
-  // or let parent pass selectedId
-  const item = allData.length > 0 ? allData[0] : null
+  const item = selectedId != null
+    ? allData.find((row) => String(row[matchCol]) === String(selectedId)) || allData[0] || null
+    : allData.length > 0 ? allData[0] : null
   const getFieldKey = (f) => String(f.key || '').toLowerCase()
   const latField = fields.find(f => getFieldKey(f) === 'lat')
   const lonField = fields.find(f => getFieldKey(f) === 'lon')
@@ -511,7 +519,7 @@ function DetailPanel({ component, datasets, height }) {
             <Text size="12px" c="#888F9E" mb={4}>
               {f.label}
             </Text>
-            <Text size="13px" c="#ffffff" fw={400} truncate="end">
+            <Text size="13px" c="#ffffff" fw={400} lh={1.35} style={{ paddingBottom: 2 }} truncate="end">
               {item[f.key] != null
                 ? (getFieldKey(f) === 'name'
                   ? toTitleCase(String(item[f.key]))
@@ -543,7 +551,7 @@ function HtmlCard({ component }) {
 }
 
 // ─── Map Component (real Deck.gl) ───
-function MapComponent({ component, mapConfigs, mapDatasets, height = 560 }) {
+function MapComponent({ component, mapConfigs, mapDatasets, height = 560, onSelect }) {
   const templateId = component.template_id
   const mapConfig = templateId ? mapConfigs[templateId] : null
 
@@ -569,7 +577,7 @@ function MapComponent({ component, mapConfigs, mapDatasets, height = 560 }) {
   return (
     <Box>
       <Box style={{ borderRadius: 8, overflow: 'hidden' }}>
-        <DeckMap mapConfig={mapConfig} datasets={mapDatasets} height={height} />
+        <DeckMap mapConfig={mapConfig} datasets={mapDatasets} height={height} onSelect={onSelect} />
       </Box>
     </Box>
   )
@@ -599,6 +607,7 @@ function PortCard({ port, withinCard = false }) {
       <Group justify="space-between" mb="sm">
         <Text fw={800} size="lg" c="#ffffff">{`${port.name} — 50km Detections`}</Text>
         <Badge
+          className="badge-keep-original"
           size="sm"
           variant="filled"
           styles={{ root: { ...riskBadgeStyle, border: 'none' } }}
@@ -787,7 +796,7 @@ function GrainPage({ grainData, mapConfigs, mapDatasets }) {
 }
 
 // ─── Component Router ───
-function RenderComponent({ component, datasets, mapConfigs, mapDatasets, height }) {
+function RenderComponent({ component, datasets, mapConfigs, mapDatasets, height, onSelect, selectedId }) {
   switch (component.type) {
     case 'kpi':
       return <KpiCard component={component} datasets={datasets} />
@@ -798,9 +807,9 @@ function RenderComponent({ component, datasets, mapConfigs, mapDatasets, height 
     case 'chip_grid':
       return <ChipGrid component={component} datasets={datasets} />
     case 'map':
-      return <MapComponent component={component} mapConfigs={mapConfigs} mapDatasets={mapDatasets} height={height} />
+      return <MapComponent component={component} mapConfigs={mapConfigs} mapDatasets={mapDatasets} height={height} onSelect={onSelect} />
     case 'detail_panel':
-      return <DetailPanel component={component} datasets={datasets} height={height} />
+      return <DetailPanel component={component} datasets={datasets} height={height} selectedId={selectedId} />
     case 'port_card':
     case 'suspect_table':
     case 'assessment':
@@ -834,6 +843,9 @@ function Section({ section, datasets, mapConfigs, mapDatasets }) {
   const sizeTable = others.find(c => c.type === 'table' && c.size_bins)
   const hasMapDetailLayout = Boolean(mapComp && detailPanel)
   const hasMapOnlyLayout = Boolean(mapComp && !detailPanel)
+  const [selectedDetailId, setSelectedDetailId] = useState(null)
+  const detailMatchColumn = detailPanel?.match_column || mapComp?.on_click?.column || 'object_id'
+  const mapSelectColumn = mapComp?.on_click?.column || detailMatchColumn
   const remainingComps = others.filter(c => {
     if (c === mapComp || c === detailPanel || c === sizeTable) return false
     return true
@@ -858,18 +870,21 @@ function Section({ section, datasets, mapConfigs, mapDatasets }) {
           style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 8 }}>
           <Box style={{ minHeight: mapDetailHeight }}>
             <RenderComponent component={mapComp} datasets={datasets}
-              mapConfigs={mapConfigs} mapDatasets={mapDatasets} height={mapDetailHeight} />
+              mapConfigs={mapConfigs} mapDatasets={mapDatasets} height={mapDetailHeight}
+              onSelect={(row) => setSelectedDetailId(row?.[mapSelectColumn] ?? null)} />
           </Box>
           <Box style={{ height: mapDetailHeight }}>
             <RenderComponent component={detailPanel} datasets={datasets}
-              mapConfigs={mapConfigs} mapDatasets={mapDatasets} height={mapDetailHeight} />
+              mapConfigs={mapConfigs} mapDatasets={mapDatasets} height={mapDetailHeight}
+              selectedId={selectedDetailId != null ? selectedDetailId : null} />
           </Box>
         </Box>
       )}
       {hasMapOnlyLayout && (
         <Box mb={(sizeTable || remainingComps.length > 0) ? 8 : 0}>
           <RenderComponent component={mapComp} datasets={datasets}
-            mapConfigs={mapConfigs} mapDatasets={mapDatasets} height={mapDetailHeight} />
+            mapConfigs={mapConfigs} mapDatasets={mapDatasets} height={mapDetailHeight}
+            onSelect={(row) => setSelectedDetailId(row?.[mapSelectColumn] ?? null)} />
         </Box>
       )}
       {sizeTable && (
@@ -890,6 +905,7 @@ function Section({ section, datasets, mapConfigs, mapDatasets }) {
 export default function App() {
   const { manifest, datasets, mapConfigs, mapDatasets, grainData, loading } = useManifest()
   const [activeTab, setActiveTab] = useState('')
+  const [selectedVersion, setSelectedVersion] = useState('v1')
 
   if (loading || !manifest) {
     return (
@@ -945,11 +961,26 @@ export default function App() {
     return [firstGroup, ...remainingGroups].filter(group => group.length > 0)
   }
   const activeTabKey = activeTab || pages[0]?.key || 'weekly'
+  const versionOptions = [
+    { value: 'v1', label: 'Version 1 - Current' },
+    { value: 'v2', label: 'Version 2 - Draft' },
+  ]
 
   return (
     <AppShell padding="md">
       <AppShell.Main>
-        <Container size="xl">
+        <Container size="xl" className={selectedVersion === 'v2' ? 'dashboard-version-v2' : undefined}>
+          <Group justify="flex-end" mb={8}>
+            <Select
+              value={selectedVersion}
+              onChange={(value) => value && setSelectedVersion(value)}
+              data={versionOptions}
+              className="version-select"
+              size="sm"
+              w={280}
+            />
+          </Group>
+
           <Card className="dashboard-header-card" shadow="sm" padding="xl" radius="md" withBorder mb={8}>
             <Box className="dashboard-header-top">
               <Image

@@ -75,7 +75,7 @@ function applyFilter(data, filterExpr) {
   return data.filter(d => String(d[field]) === val);
 }
 
-export default function DeckMap({ mapConfig, datasets, height = 500 }) {
+export default function DeckMap({ mapConfig, datasets, height = 500, onSelect }) {
   const [tooltip, setTooltip] = useState(null);
 
   const viewState = useMemo(() => ({
@@ -170,6 +170,11 @@ export default function DeckMap({ mapConfig, datasets, height = 500 }) {
     }
   };
 
+  const onClick = (info) => {
+    if (!info?.object || typeof onSelect !== 'function') return;
+    onSelect(info.object);
+  };
+
   if (!mapConfig) {
     return (
       <Box style={{ height, background: '#1a1b2e', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -185,6 +190,7 @@ export default function DeckMap({ mapConfig, datasets, height = 500 }) {
         controller={true}
         layers={layers}
         onHover={onHover}
+        onClick={onClick}
         style={{ borderRadius: 8 }}
       >
         <Map
@@ -199,8 +205,8 @@ export default function DeckMap({ mapConfig, datasets, height = 500 }) {
           position: 'absolute',
           left: tooltip.x + 10,
           top: tooltip.y + 10,
-          background: 'rgba(20, 22, 35, 0.95)',
-          border: '1px solid #333',
+          background: '#181926',
+          border: '1px solid #393C56',
           borderRadius: 6,
           padding: '8px 12px',
           pointerEvents: 'none',

@@ -20,9 +20,29 @@ body {
   font-size: 11px !important;
   font-weight: 600 !important;
   letter-spacing: 0.35px !important;
-  min-height: 24px !important;
-  padding-left: 10px !important;
-  padding-right: 10px !important;
+  height: 20px !important;
+  min-height: 20px !important;
+  line-height: 20px !important;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+}
+
+.dashboard-version-v2 .mantine-Badge-root:not(.badge-keep-original) {
+  background-color: rgba(0, 108, 215, 0.1) !important;
+  border: 1px solid #006cd7 !important;
+  color: #ffffff !important;
+}
+
+.dashboard-version-v2 .mantine-Badge-root.badge-dark {
+  background-color: #ffa500 !important;
+  border: none !important;
+  color: #111326 !important;
+}
+
+.dashboard-version-v2 .mantine-Badge-root.badge-unattributed {
+  background-color: #f75349 !important;
+  border: none !important;
+  color: #111326 !important;
 }
 
 .kpi-card {
@@ -96,6 +116,16 @@ body {
   font-weight: 700 !important;
   margin: 0 0 6px 0 !important;
   color: #9aa2b3 !important;
+}
+
+.version-select .mantine-Input-input {
+  background-color: #24263c !important;
+  border: 1px solid #393c56 !important;
+  color: #ffffff !important;
+}
+
+.version-select .mantine-Input-input::placeholder {
+  color: #888f9e !important;
 }
 
 .dashboard-table {
